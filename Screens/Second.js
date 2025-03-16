@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, Image, } from "react-native";
-export default (props) => {
+import { View, Text, Image,TouchableOpacity } from "react-native";
+export default ({navigation}) => {
 	return (
 		<View 
 			style={{
@@ -52,17 +52,24 @@ export default (props) => {
 						alignItems: "flex-end",
 						marginBottom: 45,
 					}}>
-					<Image
-						source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/g0yl4tm6.png"}} 
-						resizeMode = {"stretch"}
-						style={{
-							width: 85,
-                            height: 13,
-                            marginTop: 100,
-                            marginRight: 155,
-                            marginBottom: -50,
-						}}
-					/>
+		  <TouchableOpacity 
+			style={{
+			  backgroundColor: "#D9D9D9",
+			  borderRadius: 20,
+			  paddingVertical: 16,
+			  paddingHorizontal: 25,
+			  marginRight:150,
+			  marginTop: 40,
+			}} onPress={()=>navigation.navigate("Third")}>
+			<Text 
+			  style={{
+				color: "#77A600",
+				fontSize: 24,
+				fontWeight: "bold",
+			  }}>
+			  {"Next"}
+			</Text>
+		  </TouchableOpacity>
 				</View>
 			</View>
 		</View>
