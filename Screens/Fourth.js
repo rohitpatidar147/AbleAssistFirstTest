@@ -1,84 +1,81 @@
 import React from "react";
-import { SafeAreaView, View, ScrollView, Text, Image, TouchableOpacity, StyleSheet, } from "react-native";
-export default ({navigation}) => {
+import { View, Text, Image, TouchableOpacity, } from "react-native";
+export default (props) => {
 	return (
-		<SafeAreaView style={styles.container}>
-			<ScrollView  style={styles.scrollView}>
-				<Text style={styles.text}>
+		<View 
+			style={{
+				flex: 1,
+				backgroundColor: "#FFFFFF",
+			}}>
+			<View  
+				style={{
+					flex: 1,
+					backgroundColor: "#FFFFFF",
+				}}>
+				<Text 
+					style={{
+						color: "#000000",
+						fontSize: 24,
+						fontWeight: "bold",
+						marginTop: 81,
+						marginBottom: 28,
+						marginHorizontal: 46,
+					}}>
 					{"Seamlessly Transform Speech into Text! 🗣️ "}
 				</Text>
 				<Image
-					source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/8y1d0onn.png"}} 
+					source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/7q832o94.png"}} 
 					resizeMode = {"stretch"}
-					style={styles.image}
+					style={{
+						width: 285,
+						height: 285,
+						marginBottom: 48,
+						marginLeft: 45,
+					}}
 				/>
-				<Text style={styles.text2}>
+				<Text 
+					style={{
+						color: "#000000",
+						fontSize: 24,
+						fontWeight: "bold",
+						marginBottom: 38,
+						marginHorizontal: 29,
+					}}>
 					{"Instantly convert your voice into written words for effortless communication."}
 				</Text>
-				<Text style={styles.text3}>
+				<Text 
+					style={{
+						color: "#000000",
+						fontSize: 24,
+						fontWeight: "bold",
+						marginBottom: 28,
+						marginHorizontal: 30,
+					}}>
 					{"And that's just the beginning—explore many more features designed to make life easier for you!"}
 				</Text>
-				<View style={styles.view}>
-					<TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HomeScreen")}>
-						<Text style={styles.text4}>
+				<View 
+					style={{
+						alignItems: "center",
+						marginBottom: 29,
+					}}>
+					<TouchableOpacity 
+						style={{
+							backgroundColor: "#D9D9D9",
+							borderRadius: 20,
+							paddingVertical: 16,
+							paddingHorizontal: 25,
+						}} onPress={()=>alert('Pressed!')}>
+						<Text 
+							style={{
+								color: "#77A600",
+								fontSize: 24,
+								fontWeight: "bold",
+							}}>
 							{"Get Started"}
 						</Text>
 					</TouchableOpacity>
 				</View>
-			</ScrollView>
-		</SafeAreaView>
+			</View>
+		</View>
 	)
 }
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#FFFFFF",
-	},
-	button: {
-		backgroundColor: "#D9D9D9",
-		borderRadius: 20,
-		paddingVertical: 16,
-		paddingHorizontal: 25,
-	},
-	image: {
-		width: 285,
-		height: 285,
-		marginBottom: 48,
-		marginLeft: 45,
-	},
-	scrollView: {
-		flex: 1,
-		backgroundColor: "#C4C5C3",
-	},
-	text: {
-		color: "#000000",
-		fontSize: 24,
-		fontWeight: "bold",
-		marginTop: 81,
-		marginBottom: 28,
-		marginHorizontal: 46,
-	},
-	text2: {
-		color: "#000000",
-		fontSize: 24,
-		fontWeight: "bold",
-		marginBottom: 38,
-		marginHorizontal: 29,
-	},
-	text3: {
-		color: "#000000",
-		fontSize: 24,
-		fontWeight: "bold",
-		marginBottom: 28,
-		marginHorizontal: 30,
-	},
-	text4: {
-		color: "#77A600",
-		fontSize: 24,
-		fontWeight: "bold",
-	},
-	view: {
-		alignItems: "center",
-		marginBottom: 29,
-	},
-});

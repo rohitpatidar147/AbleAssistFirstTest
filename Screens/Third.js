@@ -1,72 +1,66 @@
 import React from "react";
-import { SafeAreaView, View, ScrollView, Text, Image, StyleSheet,Button } from "react-native";
-export default ({navigation}) => {
+import { View, ScrollView, Text, Image, } from "react-native";
+export default (props) => {
 	return (
-		<SafeAreaView style={styles.container}>
-			<ScrollView  style={styles.scrollView}>
-				<Text style={styles.text}>
+		<View 
+			style={{
+				flex: 1,
+				backgroundColor: "#FFFFFF",
+			}}>
+			<View  
+				style={{
+					flex: 1,
+					backgroundColor: "#FFFFFF",
+				}}>
+				<Text 
+					style={{
+						color: "#000000",
+						fontSize: 24,
+						fontWeight: "bold",
+						marginTop: 91,
+						marginBottom: 52,
+						marginHorizontal: 42,
+					}}>
 					{"Effortless Communication at Your Fingertips! 🎙️ "}
 				</Text>
 				<Image
-					source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/ct21qs47.png"}} 
+					source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/pfs5h9wi.png"}} 
 					resizeMode = {"stretch"}
-					style={styles.image}
+					style={{
+						width: 299,
+						height: 299,
+						marginBottom: 115,
+						marginLeft: 57,
+					}}
 				/>
-				<Text style={styles.text2}>
+				<Text 
+					style={{
+						color: "#000000",
+						fontSize: 24,
+						fontWeight: "bold",
+						marginBottom: 67,
+						marginHorizontal: 42,
+					}}>
 					{"\nConvert text into clear, natural speech and make conversations more accessible for everyone."}
 				</Text>
-				<View style={styles.view}>
+				<View 
+					style={{
+						alignItems: "flex-end",
+						marginBottom: 44,
+					}}>
 					<Image
-						source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/b9w1bwip.png"}} 
+						source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/3xk1w1go.png"}} 
 						resizeMode = {"stretch"}
-						style={styles.image2}
+						style={{
+							width: 85,
+                            height: 13,
+                            marginTop: -10,
+                            marginRight: 155,
+                            marginBottom: 50,
+						}}
 					/>
 				</View>
-                <Button
-                 title="Next"
-                  onPress={() => navigation.navigate("Fourth")} // Navigate to "Fourth" page
-                  />
-			</ScrollView>
-		</SafeAreaView>
+			</View>
+		</View>
 	)
 }
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#FFFFFF",
-	},
-	image: {
-		width: 299,
-		height: 299,
-		marginBottom: 115,
-		marginLeft: 57,
-	},
-	image2: {
-		width: 85,
-		height: 13,
-		marginRight: 30,
-	},
-	scrollView: {
-		flex: 1,
-		backgroundColor: "#C5C3C3",
-	},
-	text: {
-		color: "#000000",
-		fontSize: 24,
-		fontWeight: "bold",
-		marginTop: 91,
-		marginBottom: 52,
-		marginHorizontal: 42,
-	},
-	text2: {
-		color: "#000000",
-		fontSize: 24,
-		fontWeight: "bold",
-		marginBottom: 67,
-		marginHorizontal: 42,
-	},
-	view: {
-		alignItems: "flex-end",
-		marginBottom: 44,
-	},
-});
