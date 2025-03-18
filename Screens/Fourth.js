@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, } from "react-native";
-export default (props) => {
+import { View, Text, Image, TouchableOpacity } from "react-native";
+export default ({navigation}) => {
 	return (
 		<View 
 			style={{
@@ -48,7 +48,7 @@ export default (props) => {
 						color: "#000000",
 						fontSize: 24,
 						fontWeight: "bold",
-						marginBottom: 28,
+						marginBottom: 20,
 						marginHorizontal: 30,
 					}}>
 					{"And that's just the beginning—explore many more features designed to make life easier for you!"}
@@ -56,7 +56,7 @@ export default (props) => {
 				<View 
 					style={{
 						alignItems: "center",
-						marginBottom: 29,
+						marginBottom: 10,
 					}}>
 					<TouchableOpacity 
 						style={{
@@ -64,7 +64,7 @@ export default (props) => {
 							borderRadius: 20,
 							paddingVertical: 16,
 							paddingHorizontal: 25,
-						}} onPress={()=>alert('Pressed!')}>
+						}} onPress={()=>navigation.navigate('HomeScreen')}>
 						<Text 
 							style={{
 								color: "#77A600",

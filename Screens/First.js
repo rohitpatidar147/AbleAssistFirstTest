@@ -1,5 +1,5 @@
 import React from "react";
-import {SafeAreaView, View, ScrollView, Text, Image, Button } from "react-native";
+import {SafeAreaView, View, ScrollView, Text, Image, Button, TouchableOpacity } from "react-native";
 
 export default ({ navigation }) => {
   return (
@@ -48,24 +48,28 @@ export default ({ navigation }) => {
           }}>
           {"The AI-Powered Accessibility Companion You Deserve!"}
         </Text>
-
         <View 
           style={{
-            alignItems: "flex-end",
+            alignItems: "center",
             marginBottom: 45,
           }}>
-            
-          <Image
-            source={{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/0FMvR0VUXv/1xgd52rr.png"}} 
-            resizeMode={"stretch"}
-            style={{
-              width: 85,
-              height: 13,
-              marginTop: 70,
-              marginRight: 155,
-              marginBottom: -50,
-            }}
-          />
+            <TouchableOpacity 
+              style={{
+                marginTop: "10",
+                backgroundColor: "#D9D9D9",
+                borderRadius: 20,
+                paddingVertical: 16,
+                paddingHorizontal: 25,
+              }} onPress={()=>navigation.navigate('Second')}>
+              <Text 
+                style={{
+                  color: "#77A600",
+                  fontSize: 24,
+                  fontWeight: "bold",
+                }}>
+                {"Next"}
+              </Text>
+            </TouchableOpacity>
         </View>
       </View>
     </View>

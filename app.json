@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "ReactNative",
+    "name": "AbleAssist",
     "slug": "ReactNative",
     "version": "1.0.0",
-    "orientation": "portrais",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,

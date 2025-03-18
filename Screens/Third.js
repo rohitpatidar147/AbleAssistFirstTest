@@ -1,6 +1,6 @@
 import React from "react";
-import { View, ScrollView, Text, Image, } from "react-native";
-export default (props) => {
+import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+export default ({navigation}) => {
 	return (
 		<View 
 			style={{
@@ -38,27 +38,33 @@ export default (props) => {
 						color: "#000000",
 						fontSize: 24,
 						fontWeight: "bold",
-						marginBottom: 67,
+						marginBottom: 6,
 						marginHorizontal: 42,
 					}}>
 					{"\nConvert text into clear, natural speech and make conversations more accessible for everyone."}
 				</Text>
 				<View 
 					style={{
-						alignItems: "flex-end",
-						marginBottom: 44,
+						alignItems: "center",
+						marginBottom: 45,
 					}}>
-					<Image
-						source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/3xk1w1go.png"}} 
-						resizeMode = {"stretch"}
+						<TouchableOpacity 
 						style={{
-							width: 85,
-                            height: 13,
-                            marginTop: -10,
-                            marginRight: 155,
-                            marginBottom: 50,
-						}}
-					/>
+							marginTop: "10",
+							backgroundColor: "#D9D9D9",
+							borderRadius: 20,
+							paddingVertical: 16,
+							paddingHorizontal: 25,
+						}} onPress={()=>navigation.navigate('Fourth')}>
+						<Text 
+							style={{
+							color: "#77A600",
+							fontSize: 24,
+							fontWeight: "bold",
+							}}>
+							{"Next"}
+						</Text>
+					</TouchableOpacity>
 				</View>
 			</View>
 		</View>
