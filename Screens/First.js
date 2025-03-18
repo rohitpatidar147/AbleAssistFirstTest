@@ -1,77 +1,70 @@
-import React from "react";
-import {SafeAreaView, View, ScrollView, Text, Image, Button, TouchableOpacity } from "react-native";
+import React, { useRef } from "react";
+import { View, Text, Image } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { PanGestureHandler } from "react-native-gesture-handler";
+import SwipeHandler from "../SwipeHandler";
 
 export default ({ navigation }) => {
+  const swipeHandler = useRef(new SwipeHandler(navigation)).current;
+
   return (
-    <View
+    <GestureHandlerRootView
       style={{
         flex: 1,
         backgroundColor: "#FFFFFF",
-      }}>
-
-      <View  
-        style={{
-          flex: 1,
-          backgroundColor: "#FFFFFF",
-        }}>
-
-        <Text 
+      }}
+    >
+      <PanGestureHandler
+        onGestureEvent={(event) =>
+          swipeHandler.handleSwipe(event, "Second", null, (value) => {
+          })
+        }
+      >
+        <View
           style={{
-            color: "#000000",
-            marginTop: 90,
-            marginBottom: 0,
-            marginLeft: 40,
-            fontSize: 30,
-            fontWeight: "bold",
-          }}>
-          {"Welcome to AbleAssist!"}
-        </Text>
-
-        <Image
-          source={{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/0FMvR0VUXv/kje5ztoi.png"}} 
-          resizeMode={"stretch"}
-          style={{
-            height: 400,
-            marginBottom: 10,
-            marginTop: 60,
+            flex: 1,
+            backgroundColor: "#FFFFFF",
           }}
-        />
+        >
+          <Text
+            style={{
+              color: "#000000",
+              marginTop: 90,
+              marginBottom: 0,
+              marginLeft: 40,
+              fontSize: 30,
+              fontWeight: "bold",
+            }}
+          >
+            {"Welcome to AbleAssist!"}
+          </Text>
 
-        <Text 
-          style={{
-            color: "#000000",
-            fontSize: 24,
-            fontWeight: "bold",
-            marginBottom: 0,
-            marginHorizontal: 42,
-            marginTop:60,
-          }}>
-          {"The AI-Powered Accessibility Companion You Deserve!"}
-        </Text>
-        <View 
-          style={{
-            alignItems: "center",
-            marginBottom: 45,
-          }}>
-            <TouchableOpacity 
-              style={{
-                marginTop: "10",
-                backgroundColor: "#D9D9D9",
-                borderRadius: 20,
-                paddingVertical: 16,
-                paddingHorizontal: 25,
-              }} onPress={()=>navigation.navigate('Second')}>
-              <Text 
-                style={{
-                  color: "#77A600",
-                  fontSize: 24,
-                  fontWeight: "bold",
-                }}>
-                {"Next"}
-              </Text>
-            </TouchableOpacity>
+          <Image
+            source={{
+              uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/0FMvR0VUXv/kje5ztoi.png",
+            }}
+            resizeMode={"stretch"}
+            style={{
+              height: 400,
+              marginBottom: 10,
+              marginTop: 60,
+            }}
+          />
+
+          <Text
+            style={{
+              color: "#000000",
+              fontSize: 24,
+              fontWeight: "bold",
+              marginBottom: 0,
+              marginHorizontal: 42,
+              marginTop: 60,
+            }}
+          >
+            {"The AI-Powered Accessibility Companion You Deserve!"}
+          </Text>
         </View>
-      </View>
-    </View>
+      </PanGestureHandler>
+    </GestureHandlerRootView>
   );
 };
