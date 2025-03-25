@@ -1,7 +1,7 @@
 
 import React from "react";
-import { View, Text, Image, } from "react-native";
-export default (props) => {
+import { View, Text, Image, TouchableOpacity, } from "react-native";
+export default ({navigation}) => {
 	return (
 		<View 
 			style={{
@@ -124,6 +124,7 @@ export default (props) => {
 						{"Be My Eyes"}
 					</Text>
 				</View>
+				<TouchableOpacity onPress={() => navigation.navigate("ChatBotScreen")}>
 				<Image
 					source = {{uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/nufgzu2q.png"}} 
 					resizeMode = {"stretch"}
@@ -144,6 +145,7 @@ export default (props) => {
 					}}>
 					{"AI Assistant"}
 				</Text>
+				</TouchableOpacity>
 			</View>
 		</View>
 	)
