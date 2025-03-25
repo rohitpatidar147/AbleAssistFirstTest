@@ -7,6 +7,7 @@ import Second from './Screens/Second';
 import Third from './Screens/Third';
 import Fourth from './Screens/Fourth';
 import ChatBotScreen from './Screens/ChatBotScreen';
+import TextToSpeech from './Screens/TextToSpeech';
 
 const Stack = createNativeStackNavigator()
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name="Third" component={Third} options={{headerShown: false}}/>
         <Stack.Screen name="Fourth" component={Fourth} options={{headerShown: false}}/>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="TextToSpeech" component={TextToSpeech} options={{headerShown: false}}/>
         <Stack.Screen name="ChatBotScreen" component={ChatBotScreen} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>

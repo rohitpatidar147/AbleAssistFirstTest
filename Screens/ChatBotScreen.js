@@ -16,6 +16,7 @@ import {
 export default function ChatBotScreen() {
     const [inputMessage, setInputMessage] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
+    const API_KEY = "AIzaSyCC-mbb1ZtlFdiif-5D5qtCmsDXPKvhE5I"; // Replace with your actual API key
 
     const handleSendMessage = async () => {
         if (!inputMessage.trim()) return;
@@ -25,7 +26,7 @@ export default function ChatBotScreen() {
 
         try {
             const response = await fetch(
-                "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCC-mbb1ZtlFdiif-5D5qtCmsDXPKvhE5I",
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -36,7 +37,7 @@ export default function ChatBotScreen() {
             const data = await response.json();
 
             if (data.candidates && data.candidates.length > 0) {
-                const aiResponse = data.candidates[0].content.parts[0].text.trim(); // Trim spaces
+                const aiResponse = data.candidates[0].content.parts[0].text.trim();
                 setChatHistory(prevChat => [...prevChat, { role: "ai", text: aiResponse }]);
             } else {
                 console.log("No valid response from AI");
@@ -50,16 +51,11 @@ export default function ChatBotScreen() {
         <SafeAreaView style={styles.container}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
-                keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
                 style={{ flex: 1 }}
             >
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={{ flex: 1 }}>
-                        <ScrollView 
-                            style={styles.chatContainer}
-                            contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
-                            keyboardShouldPersistTaps="handled"
-                        >
+                        <ScrollView style={styles.chatContainer} contentContainerStyle={{ paddingBottom: 20 }}>
                             {chatHistory.map((message, index) => (
                                 <View key={index} style={[styles.messageBubble, message.role === "user" ? styles.userBubble : styles.aiBubble]}>
                                     <Text style={styles.messageText}>{message.text}</Text>
@@ -88,19 +84,19 @@ export default function ChatBotScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "#f4f4f4", padding: 10 },
+    container: { flex: 1, backgroundColor: "white", padding: 10 },
     chatContainer: { flex: 1, marginBottom: 10 },
     messageBubble: { padding: 10, borderRadius: 10, marginVertical: 5, maxWidth: "80%" },
     userBubble: { alignSelf: "flex-end", backgroundColor: "#007bff" },
-    aiBubble: { alignSelf: "flex-start", backgroundColor: "blue" },
+    aiBubble: { alignSelf: "flex-start", backgroundColor: "white" },
     messageText: { color: "#fff" },
     inputContainer: {
         flexDirection: "row",
         alignItems: "center",
         padding: 10,
-        backgroundColor: "#fff",
-        borderRadius: 30,
-        borderTopWidth: 1,
+        backgroundColor: "white",
+        borderRadius: 10,
+        borderTopWidth: 0,
         borderColor: "#ccc",
     },
     input: {
