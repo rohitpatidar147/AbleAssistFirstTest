@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator()
 export default function App() {
   return (
     <NavigationContainer> 
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName='TextToSpeech'>
         <Stack.Screen name="First" component={First} options={{headerShown: false}}/>
         <Stack.Screen name="Second" component={Second} options={{headerShown: false}}/>
         <Stack.Screen name="Third" component={Third} options={{headerShown: false}}/>

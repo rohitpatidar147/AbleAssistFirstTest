@@ -16,7 +16,7 @@ import {
 export default function ChatBotScreen() {
     const [inputMessage, setInputMessage] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
-    const API_KEY = "AIzaSyCC-mbb1ZtlFdiif-5D5qtCmsDXPKvhE5I"; // Replace with your actual API key
+    const API_KEY = "AIzaSyCrJi62EIMPZM1LzaVcivvyjnhesaOPDvM"; 
 
     const handleSendMessage = async () => {
         if (!inputMessage.trim()) return;
@@ -84,12 +84,12 @@ export default function ChatBotScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "white", padding: 10 },
+    container: { flex: 1, backgroundColor: "black", padding: 10 },
     chatContainer: { flex: 1, marginBottom: 10 },
     messageBubble: { padding: 10, borderRadius: 10, marginVertical: 5, maxWidth: "80%" },
     userBubble: { alignSelf: "flex-end", backgroundColor: "#007bff" },
     aiBubble: { alignSelf: "flex-start", backgroundColor: "white" },
-    messageText: { color: "#fff" },
+    messageText: { color: "#black" },
     inputContainer: {
         flexDirection: "row",
         alignItems: "center",
