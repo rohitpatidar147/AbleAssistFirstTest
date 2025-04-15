@@ -14,7 +14,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-export default function ChatBotScreen({ navigation }) {
+export default function ChatbotScreen({ navigation }) {
   const [inputMessage, setInputMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const scrollViewRef = useRef();
@@ -58,10 +58,17 @@ export default function ChatBotScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={{ flex: 1 }}
-      >
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home", { fromLeft: true })}>
+          <Image
+            source={{
+              uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
+            }}
+            resizeMode="stretch"
+            style={styles.image8}
+          />
+        </TouchableOpacity>
+
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ScrollView
             style={styles.scrollView}
@@ -79,8 +86,7 @@ export default function ChatBotScreen({ navigation }) {
                 {message.role === "ai" && (
                   <Image
                     source={{
-                      uri:
-                        "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/iwrmldbn_expires_30_days.png",
+                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/iwrmldbn_expires_30_days.png",
                     }}
                     resizeMode="stretch"
                     style={styles.image}
@@ -88,14 +94,10 @@ export default function ChatBotScreen({ navigation }) {
                 )}
 
                 <View
-                  style={
-                    message.role === "user" ? styles.button2 : styles.button
-                  }
+                  style={message.role === "user" ? styles.button2 : styles.button}
                 >
                   <Text
-                    style={
-                      message.role === "user" ? styles.text2 : styles.text
-                    }
+                    style={message.role === "user" ? styles.text2 : styles.text}
                   >
                     {message.text}
                   </Text>
@@ -104,8 +106,7 @@ export default function ChatBotScreen({ navigation }) {
                 {message.role === "user" && (
                   <Image
                     source={{
-                      uri:
-                        "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/cqhmsaao_expires_30_days.png",
+                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/cqhmsaao_expires_30_days.png",
                     }}
                     resizeMode="stretch"
                     style={styles.image2}
@@ -167,27 +168,27 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
   button: {
-    backgroundColor: "#D8CFC4",
+    backgroundColor: "#B4B4B4",
     borderRadius: 20,
     paddingVertical: 15,
     paddingHorizontal: 12,
     maxWidth: "70%",
   },
   button2: {
-    backgroundColor: "#DBD3D8",
+    backgroundColor: "#EFEFEF",
     borderRadius: 20,
     paddingVertical: 15,
     paddingHorizontal: 12,
     maxWidth: "70%",
   },
   text: {
-    color: "#484646",
+    color: "black",
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "left",
   },
   text2: {
-    color: "#484646",
+    color: "black",
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "right",
@@ -226,5 +227,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 20,
   },
+  image8: {
+    width: 40,
+    height: 40,
+    marginTop: 25,
+    marginLeft: 30,
+    marginRight: 300,
+  },
 });
-

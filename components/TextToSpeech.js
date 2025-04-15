@@ -22,17 +22,20 @@ export default ({ navigation }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Request camera permissions on mount
   useEffect(() => {
-    (async () => {
+    const requestPermissions = async () => {
       if (Platform.OS !== "web") {
         const { status } = await ImagePicker.requestCameraPermissionsAsync();
         if (status !== "granted") {
           alert("Sorry, we need camera permissions to make this work!");
         }
       }
-    })();
+    };
+    requestPermissions();
   }, []);
 
+  // Handle speech synthesis
   const handleSpeak = () => {
     if (!inputText.trim()) return;
     Speech.speak(inputText.trim(), {
@@ -51,6 +54,7 @@ export default ({ navigation }) => {
     });
   };
 
+  // Handle pause/resume of speech
   const handlePauseResume = () => {
     if (isPaused) {
       Speech.resume();
@@ -60,16 +64,19 @@ export default ({ navigation }) => {
     setIsPaused(!isPaused);
   };
 
+  // Handle stop of speech
   const handleStop = () => {
     Speech.stop();
     setIsSpeaking(false);
     setIsPaused(false);
   };
 
+  // Clear the text input
   const clearText = () => {
     setInputText("");
   };
 
+  // Extract text from image using Google Vision API
   const extractTextFromImage = async (imageUri) => {
     setLoading(true);
     const apiUrl = `https://vision.googleapis.com/v1/images:annotate?key=YOUR_GOOGLE_API_KEY`; // Replace with your API key
@@ -101,6 +108,7 @@ export default ({ navigation }) => {
     }
   };
 
+  // Handle image selection (gallery or camera)
   const handleImageSelection = async (source) => {
     let pickerResult;
     if (source === "gallery") {
@@ -134,10 +142,10 @@ export default ({ navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
         <View style={styles.view1}>
-          <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Home", { fromLeft: true })}>
             <Image
               source={{
-                uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/5gc81n5j_expires_30_days.png",
+                uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
               }}
               resizeMode="stretch"
               style={styles.image}
@@ -232,28 +240,28 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   image: {
-    width: 49,
-    height: 49,
+    width: 40,
+    height: 40,
     marginTop: 80,
     marginBottom: 30,
-    marginLeft: 27,
+    marginLeft: 30,
   },
   button: {
-    backgroundColor: "#DBD3D8",
-    borderRadius: 20,
+    backgroundColor: "#4CAF50",
+    borderRadius: 12,
     paddingVertical: 9,
     paddingHorizontal: 30,
   },
   clearButton: {
-    backgroundColor: "#DBD3D8",
-    borderRadius: 20,
+    backgroundColor: "#4CAF50",
+    borderRadius: 12,
     paddingVertical: 9,
     paddingHorizontal: 20,
     marginLeft: 10,
   },
   text3: {
-    color: "#77A600",
-    fontSize: 24,
+    color: "white",
+    fontSize: 18,
     fontWeight: "bold",
   },
   rowButtons: {
@@ -262,8 +270,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   view3: {
-    backgroundColor: "#D8CFC4",
-    borderRadius: 20,
+    backgroundColor: "#EFEFEF",
+    borderRadius: 12,
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginBottom: 15,
@@ -277,8 +285,8 @@ const styles = StyleSheet.create({
   },
   view: {
     alignItems: "center",
-    backgroundColor: "#D8CFC4",
-    borderRadius: 20,
+    backgroundColor: "#EFEFEF",
+    borderRadius: 12,
     paddingTop: 10,
     paddingBottom: 15,
     marginBottom: 16,
@@ -292,9 +300,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    color: "#666565",
+    color: "black",
     fontSize: 24,
-    fontWeight: "bold",
     marginTop: 8,
   },
   pauseButton: {
@@ -313,5 +320,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-
-

@@ -4,6 +4,7 @@ import { Audio } from 'expo-av';
 import * as FileSystem from 'expo-file-system';
 import axios from 'axios';
 import { Buffer } from 'buffer';
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 global.Buffer = global.Buffer || Buffer;
 
 const SpeechToTextScreen = () => {
@@ -13,7 +14,9 @@ const SpeechToTextScreen = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const ASSEMBLYAI_API_KEY = 'b390a84613614ec89c0e14a40d0bcc6e';
+    const navigation = useNavigation(); // Use useNavigation hook to get navigation
 
+    // Configure audio settings once when the component is mounted
     useEffect(() => {
         const configureAudioMode = async () => {
             try {
@@ -32,6 +35,7 @@ const SpeechToTextScreen = () => {
         configureAudioMode();
     }, []);
 
+    // Start recording when the user taps the start button
     const startRecording = async () => {
         try {
             const { status } = await Audio.requestPermissionsAsync();
@@ -54,6 +58,7 @@ const SpeechToTextScreen = () => {
         }
     };
 
+    // Stop recording when the user taps the stop button
     const stopRecording = async () => {
         try {
             if (recording) {
@@ -73,6 +78,7 @@ const SpeechToTextScreen = () => {
         }
     };
 
+    // Transcribe the recorded audio using AssemblyAI API
     const transcribeWithAssemblyAI = async (uri) => {
         try {
             // Read the audio file as binary
@@ -145,6 +151,15 @@ const SpeechToTextScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView} contentContainerStyle={{ alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => navigation.navigate("Home", { fromLeft: true })}>
+                    <Image
+                        source={{
+                            uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
+                        }}
+                        resizeMode="stretch"
+                        style={styles.image2}
+                    />
+                </TouchableOpacity>
                 <Text style={styles.text}>Speech to Text</Text>
 
                 <Image
@@ -220,7 +235,7 @@ const styles = StyleSheet.create({
     view: {
         width: "100%",
         backgroundColor: "#EFEFEF",
-        borderRadius: 20,
+        borderRadius: 12,
         padding: 20,
         marginBottom: 40,
         shadowColor: "#00000040",
@@ -232,6 +247,14 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 4,
     },
+    image2: {
+        width: 40,
+        height: 40,
+        marginTop: 25,
+        marginBottom: 30,
+        marginLeft: 30,
+        marginRight: 300,
+    }
 });
 
 export default SpeechToTextScreen;
