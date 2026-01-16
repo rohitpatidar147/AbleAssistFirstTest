@@ -3,6 +3,7 @@ import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default function HomeActionCard({
   title,
+  source,
   imageUri,
   onPress,
   accessibilityLabel,
@@ -11,6 +12,8 @@ export default function HomeActionCard({
   imageStyle,
   textStyle,
 }) {
+  const imageSource = source || (imageUri ? { uri: imageUri } : null);
+
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -22,12 +25,14 @@ export default function HomeActionCard({
       hitSlop={8}
       style={[styles.card, style]}
     >
-      <Image
-        source={{ uri: imageUri }}
-        resizeMode="stretch"
-        style={[styles.image, imageStyle]}
-        accessible={false}
-      />
+      {imageSource && (
+        <Image
+          source={imageSource}
+          resizeMode="cover"
+          style={[styles.image, imageStyle]}
+          accessible={false}
+        />
+      )}
       <Text style={[styles.title, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
