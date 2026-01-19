@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import OnboardingSlide from './OnboardingSlide';
+import { APP_ASSETS } from '../config/assets';
 
 export default function ScreenTwo() {
   return (
     <OnboardingSlide
       title="Bridging the Gap with AI!"
-      imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/8ah4kh0b.png"
+      source={APP_ASSETS.onboarding.asl}
       description="Instantly translate ASL gestures into English text and speech, making communication seamless and inclusive for all."
       titleStyle={styles.heading}
       imageStyle={styles.image}
