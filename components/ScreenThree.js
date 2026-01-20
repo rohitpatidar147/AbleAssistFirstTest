@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import OnboardingSlide from './OnboardingSlide';
+import { APP_ASSETS } from '../config/assets';
 
 export default function ScreenThree() {
   return (
     <OnboardingSlide
       title="Effortless Communication at Your Fingertips! 🎙️"
-      imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/pfs5h9wi.png"
+      source={APP_ASSETS.onboarding.tts}
       description="Convert text into clear, natural speech and make conversations more accessible for everyone."
       containerStyle={styles.content}
       titleStyle={styles.mainText}
