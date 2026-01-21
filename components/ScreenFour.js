@@ -3,12 +3,13 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import OnboardingSlide from './OnboardingSlide';
 import { APP_ROUTES } from '../config/appConfig';
+import { APP_ASSETS } from '../config/assets';
 
 export default function ScreenFour({ navigation }) {
   return (
     <OnboardingSlide
       title="Seamlessly Transform Speech into Text! 🗣️"
-      imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/7q832o94.png"
+      source={APP_ASSETS.onboarding.stt}
       titleStyle={styles.headerText}
       imageStyle={styles.image}
     >
