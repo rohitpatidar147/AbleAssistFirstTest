@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import HomeActionCard from './HomeActionCard';
 import { APP_ROUTES } from '../config/appConfig';
+import { APP_ASSETS } from '../config/assets';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -14,13 +15,13 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.row}>
           <HomeActionCard
             title="Text To Speech"
-            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/2tdz64i6.png"
+            source={APP_ASSETS.home.tts}
             onPress={() => navigation.navigate(APP_ROUTES.textToSpeech)}
             accessibilityHint="Opens text to speech"
           />
           <HomeActionCard
             title="Speech To Text"
-            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/007xigo5.png"
+            source={APP_ASSETS.home.stt}
             onPress={() => navigation.navigate(APP_ROUTES.speechToText)}
             accessibilityHint="Opens speech to text"
           />
@@ -30,11 +31,11 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.row}>
           <HomeActionCard
             title="ASL Converter"
-            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/d1mjnxqt.png"
+            source={APP_ASSETS.home.asl}
           />
           <HomeActionCard
             title="Be My Eyes"
-            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/kjxlg9k7.png"
+            source={APP_ASSETS.home.beMyEyes}
           />
         </View>
 
@@ -42,7 +43,7 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.aiWrapper}>
           <HomeActionCard
             title="AI Assistant"
-            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/nufgzu2q.png"
+            source={APP_ASSETS.home.aiAssistant}
             onPress={() => navigation.navigate(APP_ROUTES.chatBot)}
             accessibilityHint="Opens the AI assistant"
             imageStyle={styles.aiImage}
