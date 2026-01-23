@@ -16,6 +16,9 @@ import {
 
 import { generateGeminiReply } from '../services/geminiService';
 import { buildAssistantMessage, buildUserMessage, normalizeText } from '../utils/chatUtils';
+import BackButton from './BackButton';
+import { APP_ROUTES } from '../config/appConfig';
+import { APP_ASSETS } from '../config/assets';
 
 export default function ChatbotScreen({ navigation }) {
   const [inputMessage, setInputMessage] = useState('');
@@ -47,18 +50,10 @@ export default function ChatbotScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Home', { fromLeft: true })}
-          accessibilityRole="button"
-          accessibilityLabel="Back to home"
-          hitSlop={8}
-        >
-          <Image
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/93/93634.png' }}
-            resizeMode="stretch"
-            style={styles.image8}
-          />
-        </TouchableOpacity>
+        <BackButton
+          onPress={() => navigation.navigate(APP_ROUTES.home, { fromLeft: true })}
+          style={styles.backButton}
+        />
 
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ScrollView
@@ -72,8 +67,8 @@ export default function ChatbotScreen({ navigation }) {
               <View key={`${message.role}-${index}`} style={message.role === 'user' ? styles.row2 : styles.row}>
                 {message.role === 'ai' && (
                   <Image
-                    source={{ uri: 'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/iwrmldbn_expires_30_days.png' }}
-                    resizeMode="stretch"
+                    source={APP_ASSETS.chat.aiAvatar}
+                    resizeMode="cover"
                     style={styles.image}
                   />
                 )}
@@ -84,8 +79,8 @@ export default function ChatbotScreen({ navigation }) {
 
                 {message.role === 'user' && (
                   <Image
-                    source={{ uri: 'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/cqhmsaao_expires_30_days.png' }}
-                    resizeMode="stretch"
+                    source={APP_ASSETS.chat.userAvatar}
+                    resizeMode="cover"
                     style={styles.image2}
                   />
                 )}
@@ -167,14 +162,16 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   image: {
-    width: 39,
+    width: 40,
     height: 40,
+    borderRadius: 20,
     marginTop: 11,
     marginRight: 13,
   },
   image2: {
-    width: 46,
-    height: 46,
+    width: 44,
+    height: 44,
+    borderRadius: 22,
     marginLeft: 13,
   },
   inputWrapper: {
@@ -201,11 +198,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   disabledSendButton: { opacity: 0.5 },
-  image8: {
-    width: 40,
-    height: 40,
-    marginTop: 25,
-    marginLeft: 30,
-    marginRight: 300,
+  backButton: {
+    marginTop: 15,
+    marginLeft: 20,
+    marginBottom: 5,
   },
 });
