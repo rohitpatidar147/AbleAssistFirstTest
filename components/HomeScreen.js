@@ -11,7 +11,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
 import HomeActionCard from './HomeActionCard';
-import AnimatedPressable from './AnimatedPressable';
+import AnimatedPressable from '../shared/components/AnimatedPressable';
 import { APP_ROUTES } from '../config/appConfig';
 import { APP_ASSETS } from '../config/assets';
 import { THEME } from '../theme';

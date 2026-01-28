@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import AnimatedPressable from './AnimatedPressable';
+import AnimatedPressable from '../shared/components/AnimatedPressable';
 import { THEME } from '../theme';
 
 export default function HomeActionCard({

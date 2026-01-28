@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AnimatedPressable from './AnimatedPressable';
-import { THEME } from '../theme';
+import { THEME } from '../../theme';
 
 export default function BackButton({ onPress, label = 'Back to home', style }) {
   return (

@@ -18,8 +18,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { speakText, pauseSpeech, resumeSpeech, stopSpeech } from '../services/speechService';
 import { extractTextFromImage } from '../services/ocrService';
-import BackButton from './BackButton';
-import AnimatedPressable from './AnimatedPressable';
+import BackButton from '../shared/components/BackButton';
+import AnimatedPressable from '../shared/components/AnimatedPressable';
 import { APP_ROUTES } from '../config/appConfig';
 import { THEME } from '../theme';
 
