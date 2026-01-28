@@ -11,10 +11,10 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 
-import ScreenOne from './ScreenOne';
-import ScreenTwo from './ScreenTwo';
-import ScreenThree from './ScreenThree';
-import ScreenFour from './ScreenFour';
+import ScreenOne from '../features/onboarding/ScreenOne';
+import ScreenTwo from '../features/onboarding/ScreenTwo';
+import ScreenThree from '../features/onboarding/ScreenThree';
+import ScreenFour from '../features/onboarding/ScreenFour';
 import HomeScreen from './HomeScreen';
 import TextToSpeech from './TextToSpeech';
 import SpeechToTextScreen from './SpeechToTextScreen';

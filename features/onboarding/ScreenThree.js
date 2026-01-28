@@ -1,6 +1,6 @@
 import React from 'react';
 import OnboardingSlide from './OnboardingSlide';
-import { APP_ASSETS } from '../config/assets';
+import { APP_ASSETS } from '../../config/assets';
 
 export default function ScreenThree() {
   return (
