@@ -15,7 +15,7 @@ import ScreenOne from '../features/onboarding/ScreenOne';
 import ScreenTwo from '../features/onboarding/ScreenTwo';
 import ScreenThree from '../features/onboarding/ScreenThree';
 import ScreenFour from '../features/onboarding/ScreenFour';
-import HomeScreen from './HomeScreen';
+import HomeScreen from '../features/home/HomeScreen';
 import TextToSpeech from './TextToSpeech';
 import SpeechToTextScreen from './SpeechToTextScreen';
 import ChatBotScreen from './ChatbotScreen';
