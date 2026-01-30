@@ -5,6 +5,7 @@ const { width } = Dimensions.get('window');
 
 export default function OnboardingSlide({
   title,
+  source,
   imageUri,
   description,
   containerStyle,
@@ -13,14 +14,16 @@ export default function OnboardingSlide({
   descriptionStyle,
   children,
 }) {
+  const imageSource = source || (imageUri ? { uri: imageUri } : null);
+
   return (
     <View style={[styles.slide, containerStyle]}>
       {Boolean(title) && <Text style={[styles.title, titleStyle]}>{title}</Text>}
 
-      {Boolean(imageUri) && (
+      {Boolean(imageSource) && (
         <Image
-          source={{ uri: imageUri }}
-          resizeMode="stretch"
+          source={imageSource}
+          resizeMode="cover"
           style={[styles.image, imageStyle]}
           accessible={false}
         />
