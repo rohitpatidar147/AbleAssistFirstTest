@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import OnboardingSlide from './OnboardingSlide';
+import { APP_ASSETS } from '../config/assets';
 
 export default function ScreenOne() {
   return (
     <OnboardingSlide
       title="Welcome to AbleAssist!"
-      imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/0FMvR0VUXv/kje5ztoi.png"
+      source={APP_ASSETS.onboarding.welcome}
       description="The AI-Powered Accessibility Companion You Deserve!"
       titleStyle={styles.headerText}
       imageStyle={styles.image}
