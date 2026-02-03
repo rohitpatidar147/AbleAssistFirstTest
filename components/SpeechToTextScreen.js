@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import { transcribeAudioFile } from '../services/transcriptionService';
 import { APP_ROUTES } from '../config/appConfig';
+import { APP_ASSETS } from '../config/assets';
+import BackButton from './BackButton';
 
 const SpeechToTextScreen = () => {
     const [isRecording, setIsRecording] = useState(false);
@@ -87,28 +89,17 @@ const SpeechToTextScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView} contentContainerStyle={{ alignItems: 'center' }}>
-                <TouchableOpacity
+            <View style={styles.header}>
+                <BackButton
                     onPress={() => navigation.navigate(APP_ROUTES.home, { fromLeft: true })}
-                    accessibilityRole="button"
-                    accessibilityLabel="Back to home"
-                    hitSlop={8}
-                >
-                    <Image
-                        source={{
-                            uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
-                        }}
-                        resizeMode="stretch"
-                        style={styles.image2}
-                    />
-                </TouchableOpacity>
+                />
+            </View>
+            <ScrollView style={styles.scrollView} contentContainerStyle={{ alignItems: 'center' }}>
                 <Text style={styles.text}>Speech to Text</Text>
 
                 <Image
-                    source={{
-                        uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/edlqcfku_expires_30_days.png"
-                    }}
-                    resizeMode="stretch"
+                    source={APP_ASSETS.media.mic}
+                    resizeMode="cover"
                     style={styles.image}
                 />
 
@@ -170,9 +161,16 @@ const styles = StyleSheet.create({
         fontSize: 19,
         fontWeight: "bold",
     },
+    header: {
+        paddingHorizontal: 20,
+        paddingTop: 10,
+        alignItems: 'flex-start',
+    },
     image: {
-        width: 186,
-        height: 186,
+        width: 180,
+        height: 180,
+        borderRadius: 90,
+        marginVertical: 15,
     },
     view: {
         width: "100%",
