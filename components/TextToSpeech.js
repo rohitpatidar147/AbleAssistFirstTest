@@ -12,10 +12,12 @@ import {
   Platform,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { Ionicons } from "@expo/vector-icons";
 
 import { speakText, pauseSpeech, resumeSpeech, stopSpeech } from "../services/speechService";
 import { extractTextFromImage } from "../services/ocrService";
 import { APP_ROUTES } from "../config/appConfig";
+import BackButton from "./BackButton";
 
 export default ({ navigation }) => {
   const [inputText, setInputText] = useState("");
@@ -109,20 +111,10 @@ export default ({ navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
         <View style={styles.view1}>
-          <TouchableOpacity
+          <BackButton
             onPress={() => navigation.navigate(APP_ROUTES.home, { fromLeft: true })}
-            accessibilityRole="button"
-            accessibilityLabel="Back to home"
-            hitSlop={8}
-          >
-            <Image
-              source={{
-                uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
-              }}
-              resizeMode="stretch"
-              style={styles.image}
-            />
-          </TouchableOpacity>
+            style={{ marginBottom: 10 }}
+          />
 
           <View style={styles.rowButtons}>
             <TouchableOpacity style={styles.button} onPress={handleSpeak}>
@@ -169,13 +161,7 @@ export default ({ navigation }) => {
             onPress={() => handleImageSelection("gallery")}
           >
             <View style={styles.column}>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/698gn083_expires_30_days.png",
-                }}
-                resizeMode="stretch"
-                style={styles.image2}
-              />
+              <Ionicons name="images-outline" size={42} color="#007AFF" style={{ marginBottom: 8 }} />
               <Text style={styles.text}>Upload an Image</Text>
             </View>
           </TouchableOpacity>
@@ -185,13 +171,7 @@ export default ({ navigation }) => {
             onPress={() => handleImageSelection("camera")}
           >
             <View style={styles.column}>
-              <Image
-                source={{
-                  uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/2zjbb7ru_expires_30_days.png",
-                }}
-                resizeMode="stretch"
-                style={styles.image2}
-              />
+              <Ionicons name="camera-outline" size={42} color="#10B981" style={{ marginBottom: 8 }} />
               <Text style={styles.text}>Take a Picture</Text>
             </View>
           </TouchableOpacity>
