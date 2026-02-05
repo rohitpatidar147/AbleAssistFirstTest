@@ -43,7 +43,8 @@
     "react-native-text-recognition": "^1.0.2",
     "react-native-vision-camera": "^4.6.4",
     "react-native-voice": "^0.3.0",
-    "react-native-web": "~0.19.13"
+    "react-native-web": "~0.19.13",
+    "expo-linear-gradient": "~14.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
