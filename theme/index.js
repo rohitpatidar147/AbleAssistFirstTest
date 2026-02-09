@@ -1,0 +1,75 @@
+export const THEME = {
+  colors: {
+    background: '#F8FAFC',
+    backgroundDark: '#0B0F19',
+    surface: '#FFFFFF',
+    surfaceSubtle: '#F1F5F9',
+    surfaceGlass: 'rgba(255, 255, 255, 0.85)',
+    border: '#E2E8F0',
+    borderFocus: '#6366F1',
+    textPrimary: '#0F172A',
+    textSecondary: '#475569',
+    textMuted: '#94A3B8',
+    textInverse: '#FFFFFF',
+
+    // Accents
+    primary: '#4F46E5',
+    primaryLight: '#6366F1',
+    accent: '#06B6D4',
+    success: '#10B981',
+    warning: '#F59E0B',
+    danger: '#EF4444',
+
+    // Gradients
+    gradientPrimary: ['#6366F1', '#4F46E5'],
+    gradientAccent: ['#06B6D4', '#2563EB'],
+    gradientPink: ['#EC4899', '#8B5CF6'],
+    gradientGreen: ['#10B981', '#059669'],
+    gradientCard: ['#FFFFFF', '#F8FAFC'],
+    gradientHero: ['#EEF2FF', '#E0E7FF'],
+  },
+  radii: {
+    sm: 8,
+    md: 14,
+    lg: 20,
+    xl: 28,
+    full: 9999,
+  },
+  shadows: {
+    soft: {
+      shadowColor: '#4F46E5',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.08,
+      shadowRadius: 12,
+      elevation: 3,
+    },
+    card: {
+      shadowColor: '#0F172A',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.08,
+      shadowRadius: 20,
+      elevation: 5,
+    },
+    glow: {
+      shadowColor: '#6366F1',
+      shadowOffset: { width: 0, height: 6 },
+      shadowOpacity: 0.35,
+      shadowRadius: 18,
+      elevation: 8,
+    },
+    floating: {
+      shadowColor: '#0F172A',
+      shadowOffset: { width: 0, height: 12 },
+      shadowOpacity: 0.15,
+      shadowRadius: 28,
+      elevation: 10,
+    },
+  },
+  typography: {
+    h1: { fontSize: 28, fontWeight: '800', letterSpacing: -0.5 },
+    h2: { fontSize: 22, fontWeight: '700', letterSpacing: -0.3 },
+    h3: { fontSize: 18, fontWeight: '600' },
+    body: { fontSize: 16, fontWeight: '400', lineHeight: 22 },
+    caption: { fontSize: 13, fontWeight: '500' },
+  },
+};
