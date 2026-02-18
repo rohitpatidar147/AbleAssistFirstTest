@@ -1,76 +1,64 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 
 import OnboardingSlide from './OnboardingSlide';
+import AnimatedPressable from './AnimatedPressable';
 import { APP_ROUTES } from '../config/appConfig';
 import { APP_ASSETS } from '../config/assets';
+import { THEME } from '../theme';
 
 export default function ScreenFour({ navigation }) {
   return (
     <OnboardingSlide
-      title="Seamlessly Transform Speech into Text! 🗣️"
+      badgeText="SPEECH TO TEXT"
+      title="Speech Recognition in Real-Time"
       source={APP_ASSETS.onboarding.stt}
-      titleStyle={styles.headerText}
-      imageStyle={styles.image}
+      description="Speak naturally and watch your voice transform into clear, editable text in seconds."
     >
-      <Text style={styles.subHeaderText}>
-        Instantly convert your voice into written words for effortless communication.
-      </Text>
-
-      <Text style={styles.subHeaderText}>
-        And that's just the beginning—explore many more features designed to make life easier for you!
-      </Text>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
+      <View style={styles.actionContainer}>
+        <AnimatedPressable
           onPress={() => navigation.navigate(APP_ROUTES.home)}
           accessibilityRole="button"
-          accessibilityLabel="Get Started"
+          accessibilityLabel="Get Started with AbleAssist"
+          style={styles.buttonWrapper}
         >
-          <Text style={styles.buttonText}>Get Started</Text>
-        </TouchableOpacity>
+          <LinearGradient
+            colors={THEME.colors.gradientPrimary}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>Get Started</Text>
+            <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+          </LinearGradient>
+        </AnimatedPressable>
       </View>
     </OnboardingSlide>
   );
 }
 
 const styles = StyleSheet.create({
-  headerText: {
-    color: '#000000',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 81,
-    marginBottom: 28,
-    marginHorizontal: 46,
+  actionContainer: {
+    width: '100%',
+    marginTop: 20,
   },
-  image: {
-    width: 285,
-    height: 285,
-    alignSelf: 'center',
-    marginBottom: 48,
-  },
-  subHeaderText: {
-    color: '#000000',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    marginHorizontal: 29,
-  },
-  buttonContainer: {
-    alignItems: 'center',
-    marginTop: 10,
+  buttonWrapper: {
+    width: '100%',
   },
   button: {
-    backgroundColor: '#D9D9D9',
-    borderRadius: 20,
-    paddingVertical: 16,
-    paddingHorizontal: 25,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15,
+    borderRadius: THEME.radii.full,
+    ...THEME.shadows.glow,
   },
   buttonText: {
-    color: '#77A600',
-    fontSize: 24,
-    fontWeight: 'bold',
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '800',
+    marginRight: 8,
   },
 });
-
