@@ -13,7 +13,7 @@ export const APP_CONFIG = {
     endpoint: 'https://generativelanguage.googleapis.com/v1beta/models',
   },
   assemblyAi: {
-    apiKey: process.env.EXPO_PUBLIC_ASSEMBLYAI_API_KEY || 'b390a84613614ec89c0e14a40d0bcc6e',
+    apiKey: process.env.EXPO_PUBLIC_ASSEMBLYAI_API_KEY || '',
     endpoint: 'https://api.assemblyai.com/v2',
   },
   googleVision: {
