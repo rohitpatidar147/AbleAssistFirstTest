@@ -9,16 +9,20 @@ export const APP_ROUTES = {
 export const APP_CONFIG = {
   gemini: {
     apiKey: process.env.EXPO_PUBLIC_GEMINI_API_KEY || '',
-    model: 'gemini-2.0-flash',
-    endpoint: 'https://generativelanguage.googleapis.com/v1beta/models',
+    model: process.env.EXPO_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash',
+    endpoint:
+      process.env.EXPO_PUBLIC_GEMINI_ENDPOINT ||
+      'https://generativelanguage.googleapis.com/v1beta/models',
   },
   assemblyAi: {
     apiKey: process.env.EXPO_PUBLIC_ASSEMBLYAI_API_KEY || '',
-    endpoint: 'https://api.assemblyai.com/v2',
+    endpoint: process.env.EXPO_PUBLIC_ASSEMBLYAI_ENDPOINT || 'https://api.assemblyai.com/v2',
   },
   googleVision: {
     apiKey: process.env.EXPO_PUBLIC_GOOGLE_VISION_API_KEY || '',
-    endpoint: 'https://vision.googleapis.com/v1/images:annotate',
+    endpoint:
+      process.env.EXPO_PUBLIC_GOOGLE_VISION_ENDPOINT ||
+      'https://vision.googleapis.com/v1/images:annotate',
   },
 };
 
