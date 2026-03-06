@@ -2,9 +2,14 @@ import { APP_CONFIG } from '../config/appConfig';
 
 export async function generateGeminiReply(prompt) {
   const apiKey = APP_CONFIG.gemini.apiKey;
+  const normalizedPrompt = prompt?.trim();
 
   if (!apiKey) {
     return 'AI is not configured yet. Add EXPO_PUBLIC_GEMINI_API_KEY to your environment.';
+  }
+
+  if (!normalizedPrompt) {
+    return 'Please enter a message before asking AbleAssist.';
   }
 
   const response = await fetch(
@@ -13,7 +18,7 @@ export async function generateGeminiReply(prompt) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
+        contents: [{ parts: [{ text: normalizedPrompt }] }],
       }),
     }
   );
