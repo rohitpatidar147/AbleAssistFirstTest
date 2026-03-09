@@ -22,7 +22,9 @@ export async function extractTextFromImage(imageUri) {
     ],
   };
 
-  const response = await axios.post(`${endpoint}?key=${apiKey}`, requestData);
+  const response = await axios.post(`${endpoint}?key=${apiKey}`, requestData, {
+    timeout: 30000,
+  });
   const textAnnotations = response.data?.responses?.[0]?.textAnnotations;
 
   if (textAnnotations && textAnnotations.length > 0) {
