@@ -51,13 +51,16 @@ export async function transcribeAudioFile(uri) {
   }
 
   let completed = false;
+  let pollAttempts = 0;
   let transcript = '';
 
-  while (!completed) {
+  while (!completed && pollAttempts < 30) {
+    pollAttempts += 1;
     const pollingResponse = await axios.get(`${endpoint}/transcript/${transcriptId}`, {
       headers: {
         authorization: apiKey,
       },
+      timeout: 30000,
     });
 
     const status = pollingResponse.data?.status;
@@ -70,6 +73,10 @@ export async function transcribeAudioFile(uri) {
     } else {
       await new Promise((resolve) => setTimeout(resolve, 2000));
     }
+  }
+
+  if (!completed) {
+    throw new Error('Transcription timed out while waiting for AssemblyAI.');
   }
 
   return transcript;
