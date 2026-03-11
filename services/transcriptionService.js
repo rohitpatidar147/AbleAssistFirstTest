@@ -24,6 +24,7 @@ export async function transcribeAudioFile(uri) {
         authorization: apiKey,
         'content-type': 'application/octet-stream',
       },
+      timeout: 30000,
     }
   );
 
@@ -40,6 +41,7 @@ export async function transcribeAudioFile(uri) {
         authorization: apiKey,
         'content-type': 'application/json',
       },
+      timeout: 30000,
     }
   );
 
