@@ -1,9 +1,15 @@
 import * as Speech from 'expo-speech';
 
 export function speakText(text, options = {}) {
+  const normalizedText = text?.trim();
+
+  if (!normalizedText) {
+    return;
+  }
+
   const { language = 'en', rate = 1, pitch = 1, onStart, onDone, onError } = options;
 
-  Speech.speak(text, {
+  Speech.speak(normalizedText, {
     language,
     rate,
     pitch,
