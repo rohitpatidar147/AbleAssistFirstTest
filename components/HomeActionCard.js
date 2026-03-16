@@ -30,7 +30,10 @@ export default function HomeActionCard({
     >
       <View style={styles.card}>
         {Boolean(tag) && (
-          <View style={[styles.badge, { backgroundColor: tagColor }]}>
+          <View
+            accessible={false}
+            style={[styles.badge, { backgroundColor: tagColor }]}
+          >
             <Text style={styles.badgeText}>{tag}</Text>
           </View>
         )}
