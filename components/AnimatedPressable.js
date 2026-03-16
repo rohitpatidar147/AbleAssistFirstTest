@@ -42,6 +42,7 @@ export default function AnimatedPressable({
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled }}
     >
       <Animated.View style={[{ transform: [{ scale: scaleAnim }] }, style]}>
         {children}
