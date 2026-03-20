@@ -109,6 +109,7 @@ function OnboardingCarousel({ navigation }) {
               onPress={() => goToIndex(i)}
               accessibilityRole="button"
               accessibilityLabel={`Go to onboarding page ${i + 1}`}
+              accessibilityState={{ selected: currentIndex === i }}
               style={[styles.dot, currentIndex === i && styles.activeDot]}
             />
           ))}
