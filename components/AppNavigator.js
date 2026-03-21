@@ -18,7 +18,7 @@ import ScreenFour from '../features/onboarding/ScreenFour';
 import HomeScreen from '../features/home/HomeScreen';
 import TextToSpeech from './TextToSpeech';
 import SpeechToTextScreen from './SpeechToTextScreen';
-import ChatBotScreen from './ChatbotScreen';
+import ChatBotScreen from '../features/chat/ChatbotScreen';
 import { APP_ROUTES, ONBOARDING_SCREENS } from '../config/appConfig';
 import { THEME } from '../theme';
 

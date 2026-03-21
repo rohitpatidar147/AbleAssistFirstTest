@@ -16,13 +16,13 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
-import { generateGeminiReply } from '../services/geminiService';
-import { buildAssistantMessage, buildUserMessage, normalizeText } from '../utils/chatUtils';
-import BackButton from '../shared/components/BackButton';
-import AnimatedPressable from '../shared/components/AnimatedPressable';
-import { APP_ROUTES } from '../config/appConfig';
-import { APP_ASSETS } from '../config/assets';
-import { THEME } from '../theme';
+import { generateGeminiReply } from './geminiService';
+import { buildAssistantMessage, buildUserMessage, normalizeText } from './chatUtils';
+import BackButton from '../../shared/components/BackButton';
+import AnimatedPressable from '../../shared/components/AnimatedPressable';
+import { APP_ROUTES } from '../../config/appConfig';
+import { APP_ASSETS } from '../../config/assets';
+import { THEME } from '../../theme';
 
 const SUGGESTED_PROMPTS = [
   'How can you assist me today?',

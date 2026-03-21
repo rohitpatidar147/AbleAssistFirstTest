@@ -1,4 +1,4 @@
-import { APP_CONFIG } from '../config/appConfig';
+import { APP_CONFIG } from '../../config/appConfig';
 
 export async function generateGeminiReply(prompt) {
   const apiKey = APP_CONFIG.gemini.apiKey;
