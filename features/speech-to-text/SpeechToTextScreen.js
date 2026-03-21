@@ -14,11 +14,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { transcribeAudioFile } from '../services/transcriptionService';
-import BackButton from '../shared/components/BackButton';
-import AnimatedPressable from '../shared/components/AnimatedPressable';
-import { APP_ROUTES } from '../config/appConfig';
-import { THEME } from '../theme';
+import { transcribeAudioFile } from './transcriptionService';
+import BackButton from '../../shared/components/BackButton';
+import AnimatedPressable from '../../shared/components/AnimatedPressable';
+import { APP_ROUTES } from '../../config/appConfig';
+import { THEME } from '../../theme';
 
 export default function SpeechToTextScreen() {
   const [isRecording, setIsRecording] = useState(false);

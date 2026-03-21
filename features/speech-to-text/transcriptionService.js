@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
 import { Buffer } from 'buffer';
-import { APP_CONFIG } from '../config/appConfig';
+import { APP_CONFIG } from '../../config/appConfig';
 
 global.Buffer = global.Buffer || Buffer;
 
