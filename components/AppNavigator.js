@@ -16,7 +16,7 @@ import ScreenTwo from '../features/onboarding/ScreenTwo';
 import ScreenThree from '../features/onboarding/ScreenThree';
 import ScreenFour from '../features/onboarding/ScreenFour';
 import HomeScreen from '../features/home/HomeScreen';
-import TextToSpeech from './TextToSpeech';
+import TextToSpeech from '../features/text-to-speech/TextToSpeech';
 import SpeechToTextScreen from '../features/speech-to-text/SpeechToTextScreen';
 import ChatBotScreen from '../features/chat/ChatbotScreen';
 import { APP_ROUTES, ONBOARDING_SCREENS } from '../config/appConfig';

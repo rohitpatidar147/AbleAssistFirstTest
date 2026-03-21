@@ -16,12 +16,12 @@ import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
-import { speakText, pauseSpeech, resumeSpeech, stopSpeech } from '../services/speechService';
-import { extractTextFromImage } from '../services/ocrService';
-import BackButton from '../shared/components/BackButton';
-import AnimatedPressable from '../shared/components/AnimatedPressable';
-import { APP_ROUTES } from '../config/appConfig';
-import { THEME } from '../theme';
+import { speakText, pauseSpeech, resumeSpeech, stopSpeech } from './speechService';
+import { extractTextFromImage } from './ocrService';
+import BackButton from '../../shared/components/BackButton';
+import AnimatedPressable from '../../shared/components/AnimatedPressable';
+import { APP_ROUTES } from '../../config/appConfig';
+import { THEME } from '../../theme';
 
 const SPEED_PRESETS = [
   { label: '0.8x', rate: 0.8 },

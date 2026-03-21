@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
-import { APP_CONFIG } from '../config/appConfig';
+import { APP_CONFIG } from '../../config/appConfig';
 
 export async function extractTextFromImage(imageUri) {
   const { apiKey, endpoint } = APP_CONFIG.googleVision;
