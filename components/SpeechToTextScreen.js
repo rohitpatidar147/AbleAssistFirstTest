@@ -163,6 +163,7 @@ export default function SpeechToTextScreen() {
               disabled={isLoading}
               accessibilityRole="button"
               accessibilityLabel={isRecording ? 'Stop Recording' : 'Start Recording'}
+              accessibilityHint={isRecording ? 'Stops recording and starts transcription' : 'Requests microphone access and starts recording'}
               style={styles.micButtonWrapper}
             >
               <LinearGradient
