@@ -37,7 +37,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.subheading}>Empowering accessible communication with AI</Text>
           </View>
 
-          <View style={styles.statusChip}>
+          <View accessible accessibilityRole="text" accessibilityLabel="AI Ready" style={styles.statusChip}>
             <View style={styles.statusDot} />
             <Text style={styles.statusText}>AI Ready</Text>
           </View>
