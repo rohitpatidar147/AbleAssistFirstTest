@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import OnboardingSlide from './OnboardingSlide';
 import AnimatedPressable from '../../shared/components/AnimatedPressable';
 import { APP_ROUTES } from '../../core/appConfig';
-import { APP_ASSETS } from '../../config/assets';
+import { APP_ASSETS } from '../../core/assets';
 import { THEME } from '../../theme';
 
 export default function ScreenFour({ navigation }) {

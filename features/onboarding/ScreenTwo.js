@@ -1,6 +1,6 @@
 import React from 'react';
 import OnboardingSlide from './OnboardingSlide';
-import { APP_ASSETS } from '../../config/assets';
+import { APP_ASSETS } from '../../core/assets';
 
 export default function ScreenTwo() {
   return (
