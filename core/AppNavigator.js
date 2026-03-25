@@ -11,14 +11,16 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 
-import ScreenOne from '../features/onboarding/ScreenOne';
-import ScreenTwo from '../features/onboarding/ScreenTwo';
-import ScreenThree from '../features/onboarding/ScreenThree';
-import ScreenFour from '../features/onboarding/ScreenFour';
-import HomeScreen from '../features/home/HomeScreen';
-import TextToSpeech from '../features/text-to-speech/TextToSpeech';
-import SpeechToTextScreen from '../features/speech-to-text/SpeechToTextScreen';
-import ChatBotScreen from '../features/chat/ChatbotScreen';
+import {
+  OnboardingScreenOne as ScreenOne,
+  OnboardingScreenTwo as ScreenTwo,
+  OnboardingScreenThree as ScreenThree,
+  OnboardingScreenFour as ScreenFour,
+} from '../features/onboarding';
+import HomeScreen from '../features/home';
+import TextToSpeech from '../features/text-to-speech';
+import SpeechToTextScreen from '../features/speech-to-text';
+import ChatBotScreen from '../features/chat';
 import { APP_ROUTES, ONBOARDING_SCREENS } from './appConfig';
 import { THEME } from '../shared/theme';
 
