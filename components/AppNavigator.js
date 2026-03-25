@@ -20,7 +20,7 @@ import TextToSpeech from '../features/text-to-speech/TextToSpeech';
 import SpeechToTextScreen from '../features/speech-to-text/SpeechToTextScreen';
 import ChatBotScreen from '../features/chat/ChatbotScreen';
 import { APP_ROUTES, ONBOARDING_SCREENS } from '../core/appConfig';
-import { THEME } from '../theme';
+import { THEME } from '../shared/theme';
 
 const Stack = createNativeStackNavigator();
 const ONBOARDING_VIEWABILITY_CONFIG = { viewAreaCoveragePercentThreshold: 50 };

@@ -14,7 +14,7 @@ import HomeActionCard from './HomeActionCard';
 import AnimatedPressable from '../../shared/components/AnimatedPressable';
 import { APP_ROUTES } from '../../core/appConfig';
 import { APP_ASSETS } from '../../core/assets';
-import { THEME } from '../../theme';
+import { THEME } from '../../shared/theme';
 
 export default function HomeScreen({ navigation }) {
   return (

@@ -22,7 +22,7 @@ import BackButton from '../../shared/components/BackButton';
 import AnimatedPressable from '../../shared/components/AnimatedPressable';
 import { APP_ROUTES } from '../../core/appConfig';
 import { APP_ASSETS } from '../../core/assets';
-import { THEME } from '../../theme';
+import { THEME } from '../../shared/theme';
 
 const SUGGESTED_PROMPTS = [
   'How can you assist me today?',

@@ -21,7 +21,7 @@ import { extractTextFromImage } from './ocrService';
 import BackButton from '../../shared/components/BackButton';
 import AnimatedPressable from '../../shared/components/AnimatedPressable';
 import { APP_ROUTES } from '../../core/appConfig';
-import { THEME } from '../../theme';
+import { THEME } from '../../shared/theme';
 
 const SPEED_PRESETS = [
   { label: '0.8x', rate: 0.8 },
