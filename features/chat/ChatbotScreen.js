@@ -20,7 +20,7 @@ import { generateGeminiReply } from './geminiService';
 import { buildAssistantMessage, buildUserMessage, normalizeText } from './chatUtils';
 import BackButton from '../../shared/components/BackButton';
 import AnimatedPressable from '../../shared/components/AnimatedPressable';
-import { APP_ROUTES } from '../../config/appConfig';
+import { APP_ROUTES } from '../../core/appConfig';
 import { APP_ASSETS } from '../../config/assets';
 import { THEME } from '../../theme';
 

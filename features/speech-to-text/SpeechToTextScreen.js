@@ -17,7 +17,7 @@ import { useNavigation } from '@react-navigation/native';
 import { transcribeAudioFile } from './transcriptionService';
 import BackButton from '../../shared/components/BackButton';
 import AnimatedPressable from '../../shared/components/AnimatedPressable';
-import { APP_ROUTES } from '../../config/appConfig';
+import { APP_ROUTES } from '../../core/appConfig';
 import { THEME } from '../../theme';
 
 export default function SpeechToTextScreen() {

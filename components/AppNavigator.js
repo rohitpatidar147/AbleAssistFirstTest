@@ -19,7 +19,7 @@ import HomeScreen from '../features/home/HomeScreen';
 import TextToSpeech from '../features/text-to-speech/TextToSpeech';
 import SpeechToTextScreen from '../features/speech-to-text/SpeechToTextScreen';
 import ChatBotScreen from '../features/chat/ChatbotScreen';
-import { APP_ROUTES, ONBOARDING_SCREENS } from '../config/appConfig';
+import { APP_ROUTES, ONBOARDING_SCREENS } from '../core/appConfig';
 import { THEME } from '../theme';
 
 const Stack = createNativeStackNavigator();

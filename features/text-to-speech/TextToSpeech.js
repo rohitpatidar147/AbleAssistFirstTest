@@ -20,7 +20,7 @@ import { speakText, pauseSpeech, resumeSpeech, stopSpeech } from './speechServic
 import { extractTextFromImage } from './ocrService';
 import BackButton from '../../shared/components/BackButton';
 import AnimatedPressable from '../../shared/components/AnimatedPressable';
-import { APP_ROUTES } from '../../config/appConfig';
+import { APP_ROUTES } from '../../core/appConfig';
 import { THEME } from '../../theme';
 
 const SPEED_PRESETS = [
