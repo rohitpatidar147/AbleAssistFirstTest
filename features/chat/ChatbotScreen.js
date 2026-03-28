@@ -21,7 +21,7 @@ import { buildAssistantMessage, buildUserMessage, normalizeText } from './chatUt
 import { BackButton, AnimatedPressable } from '../../shared/components';
 import { APP_ROUTES } from '../../core/appConfig';
 import { APP_ASSETS } from '../../core/assets';
-import { THEME } from '../../shared/theme';
+import { THEME } from '../../shared';
 
 const SUGGESTED_PROMPTS = [
   'How can you assist me today?',

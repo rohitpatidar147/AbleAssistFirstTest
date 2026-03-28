@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, useWindowDimensions, Image } from 'react-native';
-import { THEME } from '../../shared/theme';
+import { THEME } from '../../shared';
 
 export default function OnboardingSlide({
   title,
