@@ -18,8 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { generateGeminiReply } from './geminiService';
 import { buildAssistantMessage, buildUserMessage, normalizeText } from './chatUtils';
-import BackButton from '../../shared/components/BackButton';
-import AnimatedPressable from '../../shared/components/AnimatedPressable';
+import { BackButton, AnimatedPressable } from '../../shared/components';
 import { APP_ROUTES } from '../../core/appConfig';
 import { APP_ASSETS } from '../../core/assets';
 import { THEME } from '../../shared/theme';

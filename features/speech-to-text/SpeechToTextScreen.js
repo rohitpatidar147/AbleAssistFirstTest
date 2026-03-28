@@ -15,8 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import { transcribeAudioFile } from './transcriptionService';
-import BackButton from '../../shared/components/BackButton';
-import AnimatedPressable from '../../shared/components/AnimatedPressable';
+import { BackButton, AnimatedPressable } from '../../shared/components';
 import { APP_ROUTES } from '../../core/appConfig';
 import { THEME } from '../../shared/theme';
 
