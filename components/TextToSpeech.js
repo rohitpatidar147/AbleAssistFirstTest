@@ -72,19 +72,6 @@ export default function TextToSpeech({ navigation }) {
     return () => anim?.stop();
   }, [isSpeaking, isPaused]);
 
-  // Request camera permissions
-  useEffect(() => {
-    const requestPermissions = async () => {
-      if (Platform.OS !== 'web') {
-        const { status } = await ImagePicker.requestCameraPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Camera permissions are required to scan text from documents.');
-        }
-      }
-    };
-    requestPermissions();
-  }, []);
-
   const handleSpeak = () => {
     if (!inputText.trim()) return;
     speakText(inputText.trim(), {
@@ -137,6 +124,13 @@ export default function TextToSpeech({ navigation }) {
       if (source === 'gallery') {
         pickerResult = await ImagePicker.launchImageLibraryAsync(options);
       } else {
+        if (Platform.OS !== 'web') {
+          const { status } = await ImagePicker.requestCameraPermissionsAsync();
+          if (status !== 'granted') {
+            alert('Camera permissions are required to scan text from documents.');
+            return;
+          }
+        }
         pickerResult = await ImagePicker.launchCameraAsync(options);
       }
 
