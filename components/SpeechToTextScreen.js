@@ -104,6 +104,11 @@ export default function SpeechToTextScreen() {
 
         setRecording(null);
         setIsRecording(false);
+
+        if (!uri) {
+          throw new Error('The recording file was not available.');
+        }
+
         setIsLoading(true);
 
         try {
