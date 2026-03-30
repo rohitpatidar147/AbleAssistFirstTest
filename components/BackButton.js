@@ -10,6 +10,7 @@ export default function BackButton({ onPress, label = 'Back to home', style }) {
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityHint="Returns to the home screen"
       style={[styles.container, style]}
     >
       <View style={styles.button}>
