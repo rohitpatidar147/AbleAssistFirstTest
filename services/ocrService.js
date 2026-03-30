@@ -5,6 +5,10 @@ import { APP_CONFIG } from '../config/appConfig';
 export async function extractTextFromImage(imageUri) {
   const { apiKey, endpoint } = APP_CONFIG.googleVision;
 
+  if (!imageUri) {
+    throw new Error('An image is required for text extraction.');
+  }
+
   if (!apiKey) {
     throw new Error('Google Vision API key is not configured. Please set EXPO_PUBLIC_GOOGLE_VISION_API_KEY.');
   }
