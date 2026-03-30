@@ -24,7 +24,7 @@ export async function generateGeminiReply(prompt) {
   );
 
   if (!response.ok) {
-    const errorData = await response.json().catch(() => null);
+    const errorData = await response.json().catch(() => ({}));
     const message = errorData?.error?.message || `Request failed with status ${response.status}`;
     throw new Error(message);
   }
