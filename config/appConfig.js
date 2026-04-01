@@ -7,6 +7,7 @@ export const APP_ROUTES = {
 };
 
 export const APP_CONFIG = {
+  requestTimeoutMs: Number(process.env.EXPO_PUBLIC_REQUEST_TIMEOUT_MS) || 30000,
   gemini: {
     apiKey: process.env.EXPO_PUBLIC_GEMINI_API_KEY || '',
     model: process.env.EXPO_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash',
