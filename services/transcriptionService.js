@@ -24,7 +24,7 @@ export async function transcribeAudioFile(uri) {
         authorization: apiKey,
         'content-type': 'application/octet-stream',
       },
-      timeout: 30000,
+      timeout: APP_CONFIG.requestTimeoutMs,
     }
   );
 
@@ -41,7 +41,7 @@ export async function transcribeAudioFile(uri) {
         authorization: apiKey,
         'content-type': 'application/json',
       },
-      timeout: 30000,
+      timeout: APP_CONFIG.requestTimeoutMs,
     }
   );
 
@@ -60,7 +60,7 @@ export async function transcribeAudioFile(uri) {
       headers: {
         authorization: apiKey,
       },
-      timeout: 30000,
+      timeout: APP_CONFIG.requestTimeoutMs,
     });
 
     const status = pollingResponse.data?.status;
