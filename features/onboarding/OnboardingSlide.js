@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     ...THEME.shadows.card,
   },
   badge: {
-    backgroundColor: '#EEF2FF',
+    backgroundColor: THEME.colors.primarySoft,
     paddingVertical: 5,
     paddingHorizontal: 12,
     borderRadius: THEME.radii.full,
