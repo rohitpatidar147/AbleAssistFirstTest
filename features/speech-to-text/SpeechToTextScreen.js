@@ -173,9 +173,9 @@ export default function SpeechToTextScreen() {
               <LinearGradient
                 colors={
                   isRecording
-                    ? ['#EF4444', '#DC2626']
+                    ? [THEME.colors.danger, THEME.colors.danger]
                     : isLoading
-                    ? ['#94A3B8', '#64748B']
+                    ? [THEME.colors.border, THEME.colors.textMuted]
                     : THEME.colors.gradientPrimary
                 }
                 style={styles.micButton}
@@ -224,7 +224,7 @@ export default function SpeechToTextScreen() {
                     <Ionicons
                       name={copied ? 'checkmark' : 'copy-outline'}
                       size={18}
-                      color={copied ? '#10B981' : THEME.colors.textSecondary}
+                      color={copied ? THEME.colors.success : THEME.colors.textSecondary}
                     />
                   </AnimatedPressable>
                   <AnimatedPressable
@@ -317,10 +317,10 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 75,
-    backgroundColor: 'rgba(99, 102, 241, 0.15)',
+    backgroundColor: THEME.colors.primarySoft,
   },
   pulseRingActive: {
-    backgroundColor: 'rgba(239, 68, 68, 0.2)',
+    backgroundColor: THEME.colors.dangerSoft,
   },
   micButtonWrapper: {
     borderRadius: 60,
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
   liveIndicator: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEE2E2',
+    backgroundColor: THEME.colors.dangerSoft,
     paddingVertical: 4,
     paddingHorizontal: 12,
     borderRadius: THEME.radii.full,
@@ -353,11 +353,11 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#EF4444',
+    backgroundColor: THEME.colors.danger,
     marginRight: 6,
   },
   recordingText: {
-    color: '#DC2626',
+    color: THEME.colors.danger,
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 0.8,
@@ -420,11 +420,11 @@ const styles = StyleSheet.create({
   tipsCard: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    backgroundColor: '#EEF2FF',
+    backgroundColor: THEME.colors.primarySoft,
     borderRadius: THEME.radii.lg,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E0E7FF',
+    borderColor: THEME.colors.primaryBorder,
   },
   tipsContent: {
     flex: 1,
