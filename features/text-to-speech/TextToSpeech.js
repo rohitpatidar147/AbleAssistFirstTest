@@ -230,7 +230,9 @@ export default function TextToSpeech({ navigation }) {
               >
                 <LinearGradient
                   colors={
-                    inputText.trim() ? THEME.colors.gradientPrimary : ['#CBD5E1', '#94A3B8']
+                    inputText.trim()
+                      ? THEME.colors.gradientPrimary
+                      : [THEME.colors.border, THEME.colors.textMuted]
                   }
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
@@ -258,8 +260,8 @@ export default function TextToSpeech({ navigation }) {
                     onPress={handleStop}
                     style={[styles.controlPill, styles.stopPill]}
                   >
-                    <Ionicons name="stop" size={18} color="#EF4444" />
-                    <Text style={[styles.controlPillText, { color: '#EF4444' }]}>Stop</Text>
+                    <Ionicons name="stop" size={18} color={THEME.colors.danger} />
+                    <Text style={[styles.controlPillText, { color: THEME.colors.danger }]}>Stop</Text>
                   </AnimatedPressable>
                 </>
               )}
@@ -307,8 +309,8 @@ export default function TextToSpeech({ navigation }) {
               disabled={loading}
               style={styles.ocrCard}
             >
-              <View style={[styles.ocrIconCircle, { backgroundColor: '#EEF2FF' }]}>
-                <Ionicons name="images" size={26} color="#4F46E5" />
+              <View style={[styles.ocrIconCircle, { backgroundColor: THEME.colors.primarySoft }]}>
+                <Ionicons name="images" size={26} color={THEME.colors.primary} />
               </View>
               <Text style={styles.ocrCardTitle}>Upload Photo</Text>
               <Text style={styles.ocrCardSubtitle}>From your camera roll</Text>
@@ -320,8 +322,8 @@ export default function TextToSpeech({ navigation }) {
               disabled={loading}
               style={styles.ocrCard}
             >
-              <View style={[styles.ocrIconCircle, { backgroundColor: '#ECFDF5' }]}>
-                <Ionicons name="camera" size={26} color="#059669" />
+              <View style={[styles.ocrIconCircle, { backgroundColor: THEME.colors.successSoft }]}>
+                <Ionicons name="camera" size={26} color={THEME.colors.success} />
               </View>
               <Text style={styles.ocrCardTitle}>Take Picture</Text>
               <Text style={styles.ocrCardSubtitle}>Scan physical page</Text>
@@ -413,7 +415,7 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   speakingDotActive: {
-    backgroundColor: '#16A34A',
+    backgroundColor: THEME.colors.success,
   },
   speakingTagText: {
     fontSize: 11,
@@ -490,8 +492,8 @@ const styles = StyleSheet.create({
     borderColor: THEME.colors.border,
   },
   stopPill: {
-    borderColor: '#FEE2E2',
-    backgroundColor: '#FEF2F2',
+    borderColor: THEME.colors.dangerBorder,
+    backgroundColor: THEME.colors.dangerSoft,
   },
   controlPillText: {
     fontSize: 13,
@@ -517,7 +519,7 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   presetChipActive: {
-    backgroundColor: '#EEF2FF',
+    backgroundColor: THEME.colors.primarySoft,
     borderWidth: 1,
     borderColor: THEME.colors.primary,
   },
@@ -546,7 +548,7 @@ const styles = StyleSheet.create({
   loadingCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EEF2FF',
+    backgroundColor: THEME.colors.primarySoft,
     padding: 12,
     borderRadius: THEME.radii.lg,
     marginBottom: 12,
