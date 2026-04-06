@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 13,
-    backgroundColor: '#EEF2FF',
+    backgroundColor: THEME.colors.primarySoft,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -52,14 +52,14 @@ export default function HomeScreen({ navigation }) {
           style={styles.heroWrapper}
         >
           <LinearGradient
-            colors={['#4F46E5', '#7C3AED']}
+            colors={THEME.colors.gradientHero}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.heroCard}
           >
             <View style={styles.heroContent}>
               <View style={styles.heroBadge}>
-                <Ionicons name="flash" size={12} color="#FDE047" />
+                <Ionicons name="flash" size={12} color={THEME.colors.warning} />
                 <Text style={styles.heroBadgeText}>FEATURED COMPANION</Text>
               </View>
               <Text style={styles.heroTitle}>AI Assistant</Text>
@@ -117,14 +117,14 @@ export default function HomeScreen({ navigation }) {
             subtitle="Gesture recognition"
             source={APP_ASSETS.home.asl}
             tag="Beta"
-            tagColor="#F59E0B"
+            tagColor={THEME.colors.warning}
           />
           <HomeActionCard
             title="Be My Eyes"
             subtitle="Visual description"
             source={APP_ASSETS.home.beMyEyes}
             tag="Soon"
-            tagColor="#10B981"
+            tagColor={THEME.colors.success}
           />
         </View>
 
@@ -194,22 +194,22 @@ const styles = StyleSheet.create({
   statusChip: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#DCFCE7',
+    backgroundColor: THEME.colors.successSoft,
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: THEME.radii.full,
     borderWidth: 1,
-    borderColor: '#BBF7D0',
+    borderColor: THEME.colors.successBorder,
   },
   statusDot: {
     width: 7,
     height: 7,
     borderRadius: 4,
-    backgroundColor: '#16A34A',
+    backgroundColor: THEME.colors.success,
     marginRight: 6,
   },
   statusText: {
-    color: '#15803D',
+    color: THEME.colors.success,
     fontSize: 12,
     fontWeight: '700',
   },
