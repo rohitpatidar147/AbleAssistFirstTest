@@ -202,7 +202,7 @@ export default function ChatbotScreen({ navigation }) {
                 colors={
                   inputMessage.trim() && !isTyping
                     ? THEME.colors.gradientPrimary
-                    : ['#CBD5E1', '#94A3B8']
+                    : [THEME.colors.border, THEME.colors.textMuted]
                 }
                 style={styles.sendGradient}
               >
@@ -255,9 +255,9 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#16A34A',
+    backgroundColor: THEME.colors.success,
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderColor: THEME.colors.surface,
   },
   headerTitle: {
     fontSize: 16,
