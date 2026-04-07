@@ -181,6 +181,8 @@ export default function ChatbotScreen({ navigation }) {
               onChangeText={setInputMessage}
               style={styles.input}
               accessibilityLabel="Chat message input"
+              accessibilityHint="Enter a question or request for the AI assistant"
+              maxLength={4000}
               onSubmitEditing={handleSendMessage}
               returnKeyType="send"
               multiline
