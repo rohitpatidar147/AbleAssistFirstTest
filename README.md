@@ -17,3 +17,7 @@ npm run check:architecture
 ```
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for the module ownership map.
+
+The visual system uses warm neutral surfaces, solid teal primary actions, coral
+accents, and muted semantic states. Shared values live in `shared/theme` so
+feature screens do not need to define their own palette.
