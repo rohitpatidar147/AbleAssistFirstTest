@@ -183,7 +183,7 @@ export default function SpeechToTextScreen() {
                 <Ionicons
                   name={isRecording ? 'stop' : isLoading ? 'hourglass-outline' : 'mic'}
                   size={48}
-                  color="#FFFFFF"
+                  color={THEME.colors.textInverse}
                 />
               </LinearGradient>
             </AnimatedPressable>
