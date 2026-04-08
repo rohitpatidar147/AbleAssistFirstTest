@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "check": "expo export --platform web",
-    "check:architecture": "test -d core && test -d shared && test -d features"
+    "check:architecture": "test -d core && test -d shared && test -d features",
+    "check:theme": "grep -q '#2F6F73' shared/theme/index.js"
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.1",
