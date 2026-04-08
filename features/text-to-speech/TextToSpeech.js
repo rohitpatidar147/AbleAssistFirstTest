@@ -238,7 +238,7 @@ export default function TextToSpeech({ navigation }) {
                   end={{ x: 1, y: 0 }}
                   style={styles.primaryButton}
                 >
-                  <Ionicons name="volume-high" size={20} color="#FFFFFF" />
+                  <Ionicons name="volume-high" size={20} color={THEME.colors.textInverse} />
                   <Text style={styles.primaryButtonText}>
                     {isSpeaking ? 'Speak Again' : 'Speak Text'}
                   </Text>
@@ -475,7 +475,7 @@ const styles = StyleSheet.create({
     borderRadius: THEME.radii.full,
   },
   primaryButtonText: {
-    color: '#FFFFFF',
+    color: THEME.colors.textInverse,
     fontSize: 15,
     fontWeight: '800',
     marginLeft: 8,
