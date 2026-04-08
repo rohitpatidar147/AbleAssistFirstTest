@@ -29,7 +29,7 @@ export default function HomeScreen({ navigation }) {
           <View>
             <View style={styles.brandRow}>
               <View style={styles.logoBadge}>
-                <Ionicons name="sparkles" size={16} color="#FFFFFF" />
+                <Ionicons name="sparkles" size={16} color={THEME.colors.textInverse} />
               </View>
               <Text style={styles.brandName}>AbleAssist</Text>
             </View>
@@ -68,7 +68,7 @@ export default function HomeScreen({ navigation }) {
               </Text>
               <View style={styles.heroButton}>
                 <Text style={styles.heroButtonText}>Start Chatting</Text>
-                <Ionicons name="arrow-forward" size={16} color="#FFFFFF" />
+                <Ionicons name="arrow-forward" size={16} color={THEME.colors.textInverse} />
               </View>
             </View>
 
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
   heroBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: THEME.colors.onPrimarySurface,
     paddingVertical: 3,
     paddingHorizontal: 8,
     borderRadius: THEME.radii.full,
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   heroBadgeText: {
-    color: '#FFFFFF',
+    color: THEME.colors.textInverse,
     fontSize: 10,
     fontWeight: '800',
     marginLeft: 4,
@@ -248,26 +248,26 @@ const styles = StyleSheet.create({
   heroTitle: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: THEME.colors.textInverse,
     marginBottom: 6,
   },
   heroSubtitle: {
     fontSize: 13,
-    color: 'rgba(255, 255, 255, 0.85)',
+    color: THEME.colors.textInverse,
     lineHeight: 18,
     marginBottom: 14,
   },
   heroButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+    backgroundColor: THEME.colors.onPrimarySurface,
     paddingVertical: 8,
     paddingHorizontal: 14,
     borderRadius: THEME.radii.full,
     alignSelf: 'flex-start',
   },
   heroButtonText: {
-    color: '#FFFFFF',
+    color: THEME.colors.textInverse,
     fontSize: 13,
     fontWeight: '700',
     marginRight: 6,
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     overflow: 'hidden',
     borderWidth: 2,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+    borderColor: THEME.colors.onPrimaryBorder,
     ...THEME.shadows.card,
   },
   heroImage: {
