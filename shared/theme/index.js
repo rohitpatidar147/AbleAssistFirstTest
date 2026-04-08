@@ -11,6 +11,8 @@ export const THEME = {
     textSecondary: '#526066',
     textMuted: '#7E8B8F',
     textInverse: '#FFFDF8',
+    onPrimarySurface: '#5E9491',
+    onPrimaryBorder: '#8FB5B2',
 
     // Accents
     primary: '#2F6F73',
