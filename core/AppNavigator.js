@@ -125,7 +125,7 @@ function OnboardingCarousel({ navigation }) {
             style={styles.nextPill}
           >
             <Text style={styles.nextPillText}>Next</Text>
-            <Ionicons name="arrow-forward" size={14} color="#FFFFFF" />
+            <Ionicons name="arrow-forward" size={14} color={THEME.colors.textInverse} />
           </TouchableOpacity>
         )}
       </View>
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   nextPillText: {
-    color: '#FFFFFF',
+    color: THEME.colors.textInverse,
     fontSize: 13,
     fontWeight: '700',
     marginRight: 6,

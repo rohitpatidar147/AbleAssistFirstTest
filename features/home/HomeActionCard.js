@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   badgeText: {
-    color: '#FFFFFF',
+    color: THEME.colors.textInverse,
     fontSize: 10,
     fontWeight: '700',
     textTransform: 'uppercase',

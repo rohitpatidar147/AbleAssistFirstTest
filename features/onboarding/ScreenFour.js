@@ -31,7 +31,7 @@ export default function ScreenFour({ navigation }) {
             style={styles.button}
           >
             <Text style={styles.buttonText}>Get Started</Text>
-            <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+            <Ionicons name="arrow-forward" size={18} color={THEME.colors.textInverse} />
           </LinearGradient>
         </AnimatedPressable>
       </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     ...THEME.shadows.glow,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: THEME.colors.textInverse,
     fontSize: 16,
     fontWeight: '800',
     marginRight: 8,
