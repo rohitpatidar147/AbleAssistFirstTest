@@ -206,7 +206,7 @@ export default function ChatbotScreen({ navigation }) {
                 }
                 style={styles.sendGradient}
               >
-                <Ionicons name="arrow-up" size={20} color="#FFFFFF" />
+                <Ionicons name="arrow-up" size={20} color={THEME.colors.textInverse} />
               </LinearGradient>
             </AnimatedPressable>
           </View>
