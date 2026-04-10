@@ -197,6 +197,7 @@ export default function ChatbotScreen({ navigation }) {
               ]}
               accessibilityRole="button"
               accessibilityLabel="Send message"
+              accessibilityHint="Sends the message to the AI assistant"
             >
               <LinearGradient
                 colors={
