@@ -211,6 +211,9 @@ export default function TextToSpeech({ navigation }) {
               style={styles.input}
               multiline
               textAlignVertical="top"
+              accessibilityLabel="Text to speech input"
+              accessibilityHint="Enter text to read aloud"
+              maxLength={5000}
             />
 
             {/* Character info bar */}
