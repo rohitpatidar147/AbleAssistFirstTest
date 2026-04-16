@@ -19,7 +19,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { speakText, pauseSpeech, resumeSpeech, stopSpeech } from './speechService';
 import { extractTextFromImage } from './ocrService';
 import { BackButton, AnimatedPressable } from '../../shared/components';
-import { APP_ROUTES } from '../../core/appConfig';
+import { APP_ROUTES } from '../../core/routes';
 import { THEME } from '../../shared';
 
 const SPEED_PRESETS = [

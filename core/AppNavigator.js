@@ -21,7 +21,7 @@ import HomeScreen from '../features/home';
 import TextToSpeech from '../features/text-to-speech';
 import SpeechToTextScreen from '../features/speech-to-text';
 import ChatBotScreen from '../features/chat';
-import { APP_ROUTES, ONBOARDING_SCREENS } from './appConfig';
+import { APP_ROUTES, ONBOARDING_SCREENS } from './routes';
 import { THEME } from '../shared';
 
 const Stack = createNativeStackNavigator();
