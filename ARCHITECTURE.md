@@ -11,4 +11,6 @@ The application is organized around user-facing subjects rather than file types.
 - `core` contains navigation, routes, runtime configuration, and asset registration.
 
 Feature `index.js` files are the public boundary for each subject. The app shell imports
-from `core`, while feature modules consume shared capabilities through `shared`.
+from `core`, while feature modules consume shared capabilities through `shared`. Route
+definitions live in `core/routes.js`; environment-backed service settings live in
+`core/runtimeConfig.js`.
