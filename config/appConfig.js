@@ -11,6 +11,8 @@ export const APP_CONFIG = {
     Number(process.env.EXPO_PUBLIC_REQUEST_TIMEOUT_MS) || 30000,
     1000
   ),
+  transcriptionMaxPollAttempts:
+    Number(process.env.EXPO_PUBLIC_TRANSCRIPTION_MAX_POLL_ATTEMPTS) || 30,
   gemini: {
     apiKey: process.env.EXPO_PUBLIC_GEMINI_API_KEY || '',
     model: process.env.EXPO_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash',

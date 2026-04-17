@@ -54,7 +54,7 @@ export async function transcribeAudioFile(uri) {
   let pollAttempts = 0;
   let transcript = '';
 
-  while (!completed && pollAttempts < 30) {
+  while (!completed && pollAttempts < APP_CONFIG.transcriptionMaxPollAttempts) {
     pollAttempts += 1;
     const pollingResponse = await axios.get(`${endpoint}/transcript/${transcriptId}`, {
       headers: {
