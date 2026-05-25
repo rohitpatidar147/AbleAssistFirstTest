@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import {
   FlatList,
   View,
@@ -23,6 +23,12 @@ const ONBOARDING_VIEWABILITY_CONFIG = { viewAreaCoveragePercentThreshold: 50 };
 function OnboardingCarousel({ navigation }) {
   const scrollX = useRef(new Animated.Value(0)).current;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const handleViewableItemsChanged = useCallback(({ viewableItems }) => {
+    const visibleIndex = viewableItems[0]?.index;
+    if (visibleIndex != null) {
+      setCurrentIndex(visibleIndex);
+    }
+  }, []);
 
   const screens = [
     { key: '1', component: <ScreenOne /> },
@@ -47,11 +53,7 @@ function OnboardingCarousel({ navigation }) {
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           { useNativeDriver: false }
         )}
-        onViewableItemsChanged={({ viewableItems }) => {
-          if (viewableItems.length > 0) {
-            setCurrentIndex(viewableItems[0].index);
-          }
-        }}
+        onViewableItemsChanged={handleViewableItemsChanged}
         viewabilityConfig={ONBOARDING_VIEWABILITY_CONFIG}
       />
 
