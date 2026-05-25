@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+
+import HomeActionCard from './HomeActionCard';
+import { APP_ROUTES } from '../config/appConfig';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -9,97 +12,43 @@ export default function HomeScreen({ navigation }) {
 
         {/* Row 1 */}
         <View style={styles.row}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("TextToSpeech")}
-            activeOpacity={0.7}
-            accessible
-            accessibilityRole="button"
-            accessibilityLabel="Text to Speech"
+          <HomeActionCard
+            title="Text To Speech"
+            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/2tdz64i6.png"
+            onPress={() => navigation.navigate(APP_ROUTES.textToSpeech)}
             accessibilityHint="Opens text to speech"
-            hitSlop={8}
-          >
-            <Image
-              source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/2tdz64i6.png" }}
-              resizeMode="stretch"
-              style={styles.image}
-              accessible={false}
-            />
-            <Text style={styles.imageText}>Text To Speech</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => navigation.navigate("SpeechToText")}
-            activeOpacity={0.7}
-            accessible
-            accessibilityRole="button"
-            accessibilityLabel="Speech to Text"
+          />
+          <HomeActionCard
+            title="Speech To Text"
+            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/007xigo5.png"
+            onPress={() => navigation.navigate(APP_ROUTES.speechToText)}
             accessibilityHint="Opens speech to text"
-            hitSlop={8}
-          >
-            <Image
-              source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/007xigo5.png" }}
-              resizeMode="stretch"
-              style={styles.image}
-              accessible={false}
-            />
-            <Text style={styles.imageText}>Speech To Text</Text>
-          </TouchableOpacity>
+          />
         </View>
 
         {/* Row 2 */}
         <View style={styles.row}>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            accessible
-            accessibilityRole="button"
-            accessibilityLabel="ASL Converter"
-            hitSlop={8}
-          >
-            <Image
-              source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/d1mjnxqt.png" }}
-              resizeMode="stretch"
-              style={styles.image}
-              accessible={false}
-            />
-            <Text style={styles.imageText}>ASL Converter</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            activeOpacity={0.7}
-            accessible
-            accessibilityRole="button"
-            accessibilityLabel="Be My Eyes"
-            hitSlop={8}
-          >
-            <Image
-              source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/kjxlg9k7.png" }}
-              resizeMode="stretch"
-              style={styles.image}
-              accessible={false}
-            />
-            <Text style={styles.imageText}>Be My Eyes</Text>
-          </TouchableOpacity>
+          <HomeActionCard
+            title="ASL Converter"
+            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/d1mjnxqt.png"
+          />
+          <HomeActionCard
+            title="Be My Eyes"
+            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/kjxlg9k7.png"
+          />
         </View>
 
         {/* AI Assistant */}
-        <TouchableOpacity
-          onPress={() => navigation.navigate("ChatBotScreen")}
-          activeOpacity={0.7}
-          accessible
-          accessibilityRole="button"
-          accessibilityLabel="AI Assistant"
-          accessibilityHint="Opens the AI assistant"
-          hitSlop={8}
-          style={styles.aiWrapper}
-        >
-          <Image
-            source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/nufgzu2q.png" }}
-            resizeMode="stretch"
-            style={styles.aiImage}
-            accessible={false}
+        <View style={styles.aiWrapper}>
+          <HomeActionCard
+            title="AI Assistant"
+            imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/nufgzu2q.png"
+            onPress={() => navigation.navigate(APP_ROUTES.chatBot)}
+            accessibilityHint="Opens the AI assistant"
+            imageStyle={styles.aiImage}
+            textStyle={styles.aiText}
           />
-          <Text style={styles.aiText}>AI Assistant</Text>
-        </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
