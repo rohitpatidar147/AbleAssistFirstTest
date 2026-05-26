@@ -15,6 +15,7 @@ export default function HomeScreen({ navigation }) {
             accessible
             accessibilityRole="button"
             accessibilityLabel="Text to Speech"
+            accessibilityHint="Opens text to speech"
             hitSlop={8}
           >
             <Image
@@ -32,6 +33,7 @@ export default function HomeScreen({ navigation }) {
             accessible
             accessibilityRole="button"
             accessibilityLabel="Speech to Text"
+            accessibilityHint="Opens speech to text"
             hitSlop={8}
           >
             <Image
@@ -86,6 +88,7 @@ export default function HomeScreen({ navigation }) {
           accessible
           accessibilityRole="button"
           accessibilityLabel="AI Assistant"
+          accessibilityHint="Opens the AI assistant"
           hitSlop={8}
           style={styles.aiWrapper}
         >
