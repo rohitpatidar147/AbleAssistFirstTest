@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, ScrollView, Text, TouchableOpacity, Image, StyleSheet, Alert } from 'react-native';
 import { Audio } from 'expo-av';
-import * as FileSystem from 'expo-file-system';
-import axios from 'axios';
-import { Buffer } from 'buffer';
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
-global.Buffer = global.Buffer || Buffer;
+import { useNavigation } from '@react-navigation/native';
+
+import { transcribeAudioFile } from '../services/transcriptionService';
+import { APP_ROUTES } from '../config/appConfig';
 
 const SpeechToTextScreen = () => {
     const [isRecording, setIsRecording] = useState(false);
@@ -13,8 +12,7 @@ const SpeechToTextScreen = () => {
     const [recording, setRecording] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const ASSEMBLYAI_API_KEY = 'b390a84613614ec89c0e14a40d0bcc6e';
-    const navigation = useNavigation(); // Use useNavigation hook to get navigation
+    const navigation = useNavigation();
 
     // Configure audio settings once when the component is mounted
     useEffect(() => {
@@ -69,7 +67,16 @@ const SpeechToTextScreen = () => {
                 setIsRecording(false);
                 setIsLoading(true);
 
-                await transcribeWithAssemblyAI(uri);
+                try {
+                    const transcript = await transcribeAudioFile(uri);
+                    setTranscribedText(transcript);
+                } catch (err) {
+                    console.error('AssemblyAI Transcription Error:', err);
+                    Alert.alert('Transcription Failed', err.message || 'An error occurred');
+                    setTranscribedText('Transcription failed');
+                } finally {
+                    setIsLoading(false);
+                }
             }
         } catch (err) {
             console.error('Recording stop error:', err);
@@ -78,80 +85,15 @@ const SpeechToTextScreen = () => {
         }
     };
 
-    // Transcribe the recorded audio using AssemblyAI API
-    const transcribeWithAssemblyAI = async (uri) => {
-        try {
-            // Read the audio file as binary
-            const audioFile = await FileSystem.readAsStringAsync(uri, {
-                encoding: FileSystem.EncodingType.Base64,
-            });
-
-            const uploadResponse = await axios.post(
-                'https://api.assemblyai.com/v2/upload',
-                Buffer.from(audioFile, 'base64'),
-                {
-                    headers: {
-                        authorization: ASSEMBLYAI_API_KEY,
-                        'content-type': 'application/octet-stream',
-                    },
-                }
-            );
-
-            const audioUrl = uploadResponse.data.upload_url;
-
-            const transcriptResponse = await axios.post(
-                'https://api.assemblyai.com/v2/transcript',
-                {
-                    audio_url: audioUrl,
-                },
-                {
-                    headers: {
-                        authorization: ASSEMBLYAI_API_KEY,
-                        'content-type': 'application/json',
-                    },
-                }
-            );
-
-            const transcriptId = transcriptResponse.data.id;
-
-            // Poll for transcription result
-            let completed = false;
-            let transcript = 'Transcription failed';
-
-            while (!completed) {
-                const pollingResponse = await axios.get(
-                    `https://api.assemblyai.com/v2/transcript/${transcriptId}`,
-                    {
-                        headers: {
-                            authorization: ASSEMBLYAI_API_KEY,
-                        },
-                    }
-                );
-
-                if (pollingResponse.data.status === 'completed') {
-                    transcript = pollingResponse.data.text;
-                    completed = true;
-                } else if (pollingResponse.data.status === 'error') {
-                    throw new Error(pollingResponse.data.error);
-                } else {
-                    await new Promise(res => setTimeout(res, 2000));
-                }
-            }
-
-            setTranscribedText(transcript);
-        } catch (err) {
-            console.error('AssemblyAI Transcription Error:', err);
-            Alert.alert('Transcription Failed', err.message || 'An error occurred');
-            setTranscribedText('Transcription failed');
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView} contentContainerStyle={{ alignItems: 'center' }}>
-                <TouchableOpacity onPress={() => navigation.navigate("Home", { fromLeft: true })}>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate(APP_ROUTES.home, { fromLeft: true })}
+                    accessibilityRole="button"
+                    accessibilityLabel="Back to home"
+                    hitSlop={8}
+                >
                     <Image
                         source={{
                             uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
