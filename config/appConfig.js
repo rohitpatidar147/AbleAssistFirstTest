@@ -16,6 +16,10 @@ export const APP_CONFIG = {
     apiKey: process.env.EXPO_PUBLIC_ASSEMBLYAI_API_KEY || 'b390a84613614ec89c0e14a40d0bcc6e',
     endpoint: 'https://api.assemblyai.com/v2',
   },
+  googleVision: {
+    apiKey: process.env.EXPO_PUBLIC_GOOGLE_VISION_API_KEY || '',
+    endpoint: 'https://vision.googleapis.com/v1/images:annotate',
+  },
 };
 
 export const ONBOARDING_SCREENS = [

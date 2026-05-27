@@ -11,10 +11,11 @@ import {
   TouchableWithoutFeedback,
   Platform,
 } from "react-native";
-import * as Speech from "expo-speech";
 import * as ImagePicker from "expo-image-picker";
-import * as FileSystem from "expo-file-system";
-import axios from "axios";
+
+import { speakText, pauseSpeech, resumeSpeech, stopSpeech } from "../services/speechService";
+import { extractTextFromImage } from "../services/ocrService";
+import { APP_ROUTES } from "../config/appConfig";
 
 export default ({ navigation }) => {
   const [inputText, setInputText] = useState("");
@@ -38,35 +39,29 @@ export default ({ navigation }) => {
   // Handle speech synthesis
   const handleSpeak = () => {
     if (!inputText.trim()) return;
-    Speech.speak(inputText.trim(), {
-      language: "en",
-      rate: 1,
-      pitch: 1,
+    speakText(inputText.trim(), {
       onStart: () => {
         setIsSpeaking(true);
         setIsPaused(false);
       },
       onDone: () => setIsSpeaking(false),
-      onError: (e) => {
-        console.log("Speech error", e);
-        setIsSpeaking(false);
-      },
+      onError: () => setIsSpeaking(false),
     });
   };
 
   // Handle pause/resume of speech
   const handlePauseResume = () => {
     if (isPaused) {
-      Speech.resume();
+      resumeSpeech();
     } else {
-      Speech.pause();
+      pauseSpeech();
     }
     setIsPaused(!isPaused);
   };
 
   // Handle stop of speech
   const handleStop = () => {
-    Speech.stop();
+    stopSpeech();
     setIsSpeaking(false);
     setIsPaused(false);
   };
@@ -74,38 +69,6 @@ export default ({ navigation }) => {
   // Clear the text input
   const clearText = () => {
     setInputText("");
-  };
-
-  // Extract text from image using Google Vision API
-  const extractTextFromImage = async (imageUri) => {
-    setLoading(true);
-    const apiUrl = `https://vision.googleapis.com/v1/images:annotate?key=YOUR_GOOGLE_API_KEY`; // Replace with your API key
-
-    try {
-      const base64Image = await FileSystem.readAsStringAsync(imageUri, {
-        encoding: "base64",
-      });
-
-      const requestData = {
-        requests: [
-          {
-            image: { content: base64Image },
-            features: [{ type: "TEXT_DETECTION" }],
-          },
-        ],
-      };
-
-      const response = await axios.post(apiUrl, requestData);
-      const textAnnotations = response.data.responses[0]?.textAnnotations;
-      setLoading(false);
-      return textAnnotations?.length > 0
-        ? textAnnotations[0].description
-        : "No text found.";
-    } catch (err) {
-      console.error("Google Vision API error:", err);
-      setLoading(false);
-      return "Error extracting text.";
-    }
   };
 
   // Handle image selection (gallery or camera)
@@ -129,11 +92,15 @@ export default ({ navigation }) => {
 
     if (!pickerResult.canceled && pickerResult.assets.length > 0) {
       const selectedUri = pickerResult.assets[0].uri;
-      const text = await extractTextFromImage(selectedUri);
-      if (text !== "Error extracting text.") {
+      setLoading(true);
+      try {
+        const text = await extractTextFromImage(selectedUri);
         setInputText(text);
-      } else {
+      } catch (err) {
+        console.error("OCR Error:", err);
         alert("Failed to extract text. Try again.");
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -142,7 +109,12 @@ export default ({ navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
         <View style={styles.view1}>
-          <TouchableOpacity onPress={() => navigation.navigate("Home", { fromLeft: true })}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(APP_ROUTES.home, { fromLeft: true })}
+            accessibilityRole="button"
+            accessibilityLabel="Back to home"
+            hitSlop={8}
+          >
             <Image
               source={{
                 uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
