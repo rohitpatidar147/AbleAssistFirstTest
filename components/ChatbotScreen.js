@@ -80,6 +80,7 @@ export default function ChatbotScreen({ navigation }) {
           <ScrollView
             style={styles.scrollView}
             contentContainerStyle={{ paddingBottom: 20 }}
+            keyboardShouldPersistTaps="handled"
             ref={scrollViewRef}
             onContentSizeChange={() =>
               scrollViewRef.current?.scrollToEnd({ animated: true })
