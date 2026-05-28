@@ -66,7 +66,12 @@ export default function ChatbotScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
-        <TouchableOpacity onPress={() => navigation.navigate("Home", { fromLeft: true })}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Home", { fromLeft: true })}
+          accessibilityRole="button"
+          accessibilityLabel="Back to home"
+          hitSlop={8}
+        >
           <Image
             source={{
               uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
