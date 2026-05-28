@@ -1,23 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
+import OnboardingSlide from './OnboardingSlide';
+import { APP_ROUTES } from '../config/appConfig';
 
 export default function ScreenFour({ navigation }) {
   return (
-    <View style={styles.innerContainer}>
-      <Text style={styles.headerText}>
-        Seamlessly Transform Speech into Text! 🗣️
-      </Text>
-
-      <Image
-        source={{
-          uri: 'https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/7q832o94.png',
-        }}
-        resizeMode="stretch"
-        style={styles.image}
-      />
-
+    <OnboardingSlide
+      title="Seamlessly Transform Speech into Text! 🗣️"
+      imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/7q832o94.png"
+      titleStyle={styles.headerText}
+      imageStyle={styles.image}
+    >
       <Text style={styles.subHeaderText}>
         Instantly convert your voice into written words for effortless communication.
       </Text>
@@ -29,22 +23,18 @@ export default function ScreenFour({ navigation }) {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate(APP_ROUTES.home)}
+          accessibilityRole="button"
+          accessibilityLabel="Get Started"
         >
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </OnboardingSlide>
   );
 }
 
 const styles = StyleSheet.create({
-  innerContainer: {
-    flex: 1,
-    width,
-    height,
-    backgroundColor: '#FFFFFF',
-  },
   headerText: {
     color: '#000000',
     fontSize: 30,
@@ -82,3 +72,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+

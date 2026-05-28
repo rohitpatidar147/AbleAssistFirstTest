@@ -1,35 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
+import OnboardingSlide from './OnboardingSlide';
 
 export default function ScreenOne() {
   return (
-    <View style={styles.innerContainer}>
-      <Text style={styles.headerText}>Welcome to AbleAssist!</Text>
-
-      <Image
-        source={{
-          uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/0FMvR0VUXv/kje5ztoi.png",
-        }}
-        resizeMode="stretch"
-        style={styles.image}
-      />
-
-      <Text style={styles.subHeaderText}>
-        The AI-Powered Accessibility Companion You Deserve!
-      </Text>
-    </View>
+    <OnboardingSlide
+      title="Welcome to AbleAssist!"
+      imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/0FMvR0VUXv/kje5ztoi.png"
+      description="The AI-Powered Accessibility Companion You Deserve!"
+      titleStyle={styles.headerText}
+      imageStyle={styles.image}
+      descriptionStyle={styles.subHeaderText}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  innerContainer: {
-    flex: 1,
-    width,
-    height,
-    backgroundColor: '#FFFFFF',
-  },
   headerText: {
     color: '#000000',
     marginTop: 90,
@@ -50,3 +37,4 @@ const styles = StyleSheet.create({
     marginHorizontal: 42,
   },
 });
+

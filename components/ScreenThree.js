@@ -1,35 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
+import OnboardingSlide from './OnboardingSlide';
 
 export default function ScreenThree() {
   return (
-    <View style={styles.content}>
-      <Text style={styles.mainText}>
-        Effortless Communication at Your Fingertips! 🎙️
-      </Text>
-
-      <Image
-        source={{
-          uri: 'https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/pfs5h9wi.png',
-        }}
-        resizeMode="stretch"
-        style={styles.image}
-      />
-
-      <Text style={styles.subText}>
-        Convert text into clear, natural speech and make conversations more accessible for everyone.
-      </Text>
-    </View>
+    <OnboardingSlide
+      title="Effortless Communication at Your Fingertips! 🎙️"
+      imageUri="https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/pfs5h9wi.png"
+      description="Convert text into clear, natural speech and make conversations more accessible for everyone."
+      containerStyle={styles.content}
+      titleStyle={styles.mainText}
+      imageStyle={styles.image}
+      descriptionStyle={styles.subText}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
-    width,
-    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     paddingHorizontal: 42,
   },
@@ -54,3 +43,4 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
 });
+
