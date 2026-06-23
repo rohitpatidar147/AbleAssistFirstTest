@@ -1,0 +1,22 @@
+export const APP_ROUTES = {
+  onboarding: 'Onboarding',
+  home: 'Home',
+  textToSpeech: 'TextToSpeech',
+  speechToText: 'SpeechToText',
+  chatBot: 'ChatBotScreen',
+};
+
+export const APP_CONFIG = {
+  gemini: {
+    apiKey: process.env.EXPO_PUBLIC_GEMINI_API_KEY || '',
+    model: 'gemini-2.0-flash',
+    endpoint: 'https://generativelanguage.googleapis.com/v1beta/models',
+  },
+};
+
+export const ONBOARDING_SCREENS = [
+  { key: '1', name: 'ScreenOne' },
+  { key: '2', name: 'ScreenTwo' },
+  { key: '3', name: 'ScreenThree' },
+  { key: '4', name: 'ScreenFour' },
+];
