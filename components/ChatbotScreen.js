@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -12,70 +12,49 @@ import {
   Platform,
   Keyboard,
   TouchableWithoutFeedback,
-} from "react-native";
+} from 'react-native';
+
+import { generateGeminiReply } from '../services/geminiService';
+import { buildAssistantMessage, buildUserMessage, normalizeText } from '../utils/chatUtils';
 
 export default function ChatbotScreen({ navigation }) {
-  const [inputMessage, setInputMessage] = useState("");
+  const [inputMessage, setInputMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
-  const scrollViewRef = useRef();
-
-  const API_KEY = "AIzaSyCrJi62EIMPZM1LzaVcivvyjnhesaOPDvM"; // Hide this in production
+  const scrollViewRef = useRef(null);
 
   const handleSendMessage = async () => {
-    const messageText = inputMessage.trim();
-    if (!messageText) return;
+    const messageText = normalizeText(inputMessage);
+    if (!messageText) {
+      return;
+    }
 
-    setChatHistory((prev) => [...prev, { role: "user", text: messageText }]);
-    const userMessage = messageText;
-    setInputMessage("");
+    setChatHistory((prev) => [...prev, buildUserMessage(messageText)]);
+    setInputMessage('');
     Keyboard.dismiss();
 
     try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: userMessage }] }],
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-
-      if (aiResponse) {
-        setChatHistory((prev) => [...prev, { role: "ai", text: aiResponse }]);
-      } else {
-        setChatHistory((prev) => [
-          ...prev,
-          { role: "ai", text: "Sorry, I didn't get that." },
-        ]);
-      }
+      const aiReply = await generateGeminiReply(messageText);
+      setChatHistory((prev) => [...prev, buildAssistantMessage(aiReply)]);
     } catch (error) {
-      console.error("Error fetching AI response:", error);
+      console.error('Error fetching AI response:', error);
       setChatHistory((prev) => [
         ...prev,
-        { role: "ai", text: "I couldn't connect right now. Please try again." },
+        buildAssistantMessage("I couldn't connect right now. Please try again."),
       ]);
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Home", { fromLeft: true })}
+          onPress={() => navigation.navigate('Home', { fromLeft: true })}
           accessibilityRole="button"
           accessibilityLabel="Back to home"
           hitSlop={8}
         >
           <Image
-            source={{
-              uri: "https://cdn-icons-png.flaticon.com/512/93/93634.png",
-            }}
+            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/93/93634.png' }}
             resizeMode="stretch"
             style={styles.image8}
           />
@@ -87,40 +66,25 @@ export default function ChatbotScreen({ navigation }) {
             contentContainerStyle={{ paddingBottom: 20 }}
             keyboardShouldPersistTaps="handled"
             ref={scrollViewRef}
-            onContentSizeChange={() =>
-              scrollViewRef.current?.scrollToEnd({ animated: true })
-            }
+            onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
           >
             {chatHistory.map((message, index) => (
-              <View
-                key={index}
-                style={message.role === "user" ? styles.row2 : styles.row}
-              >
-                {message.role === "ai" && (
+              <View key={`${message.role}-${index}`} style={message.role === 'user' ? styles.row2 : styles.row}>
+                {message.role === 'ai' && (
                   <Image
-                    source={{
-                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/iwrmldbn_expires_30_days.png",
-                    }}
+                    source={{ uri: 'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/iwrmldbn_expires_30_days.png' }}
                     resizeMode="stretch"
                     style={styles.image}
                   />
                 )}
 
-                <View
-                  style={message.role === "user" ? styles.button2 : styles.button}
-                >
-                  <Text
-                    style={message.role === "user" ? styles.text2 : styles.text}
-                  >
-                    {message.text}
-                  </Text>
+                <View style={message.role === 'user' ? styles.button2 : styles.button}>
+                  <Text style={message.role === 'user' ? styles.text2 : styles.text}>{message.text}</Text>
                 </View>
 
-                {message.role === "user" && (
+                {message.role === 'user' && (
                   <Image
-                    source={{
-                      uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/cqhmsaao_expires_30_days.png",
-                    }}
+                    source={{ uri: 'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/0FMvR0VUXv/cqhmsaao_expires_30_days.png' }}
                     resizeMode="stretch"
                     style={styles.image2}
                   />
@@ -131,10 +95,10 @@ export default function ChatbotScreen({ navigation }) {
           </ScrollView>
         </TouchableWithoutFeedback>
 
-        <View style={{ paddingHorizontal: 10, backgroundColor: "#FFFFFF" }}>
+        <View style={{ paddingHorizontal: 10, backgroundColor: '#FFFFFF' }}>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder={"Type here..."}
+              placeholder="Type here..."
               value={inputMessage}
               onChangeText={setInputMessage}
               style={styles.input}
@@ -145,16 +109,11 @@ export default function ChatbotScreen({ navigation }) {
             <TouchableOpacity
               onPress={handleSendMessage}
               disabled={!inputMessage.trim()}
-              style={[
-                styles.sendButton,
-                !inputMessage.trim() && styles.disabledSendButton,
-              ]}
+              style={[styles.sendButton, !inputMessage.trim() && styles.disabledSendButton]}
               accessibilityRole="button"
               accessibilityLabel="Send message"
             >
-              <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}>
-                Send
-              </Text>
+              <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 18 }}>Send</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -164,54 +123,48 @@ export default function ChatbotScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
-  scrollView: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
+  container: { flex: 1, backgroundColor: '#FFFFFF' },
+  scrollView: { flex: 1, backgroundColor: '#FFFFFF' },
   row: {
-    flexDirection: "row",
-    alignItems: "flex-start",
+    flexDirection: 'row',
+    alignItems: 'flex-start',
     marginVertical: 10,
     paddingLeft: 8,
     paddingRight: 8,
   },
   row2: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
     marginVertical: 10,
     paddingLeft: 8,
     paddingRight: 8,
   },
   button: {
-    backgroundColor: "#B4B4B4",
+    backgroundColor: '#B4B4B4',
     borderRadius: 20,
     paddingVertical: 15,
     paddingHorizontal: 12,
-    maxWidth: "70%",
+    maxWidth: '70%',
   },
   button2: {
-    backgroundColor: "#EFEFEF",
+    backgroundColor: '#EFEFEF',
     borderRadius: 20,
     paddingVertical: 15,
     paddingHorizontal: 12,
-    maxWidth: "70%",
+    maxWidth: '70%',
   },
   text: {
-    color: "black",
+    color: 'black',
     fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "left",
+    fontWeight: 'bold',
+    textAlign: 'left',
   },
   text2: {
-    color: "black",
+    color: 'black',
     fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "right",
+    fontWeight: 'bold',
+    textAlign: 'right',
   },
   image: {
     width: 39,
@@ -225,31 +178,29 @@ const styles = StyleSheet.create({
     marginLeft: 13,
   },
   inputWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginHorizontal: 10,
     marginBottom: 20,
   },
   input: {
     flex: 1,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: '#D9D9D9',
     borderRadius: 20,
     paddingVertical: 18,
     paddingLeft: 27,
     paddingRight: 20,
     fontSize: 18,
-    color: "#000",
+    color: '#000',
   },
   sendButton: {
     marginLeft: 10,
-    backgroundColor: "#007bff",
+    backgroundColor: '#007bff',
     paddingVertical: 18,
     paddingHorizontal: 20,
     borderRadius: 20,
   },
-  disabledSendButton: {
-    opacity: 0.5,
-  },
+  disabledSendButton: { opacity: 0.5 },
   image8: {
     width: 40,
     height: 40,
