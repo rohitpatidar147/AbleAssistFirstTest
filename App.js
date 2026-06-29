@@ -39,6 +39,9 @@ function OnboardingCarousel({ navigation }) {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
+        accessibilityRole="list"
+        accessibilityLabel="Onboarding pages"
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           { useNativeDriver: false }
