@@ -12,7 +12,10 @@ export default function HomeScreen({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate("TextToSpeech")}
             activeOpacity={0.7}
-            accessible accessibilityLabel="Text to Speech"
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Text to Speech"
+            hitSlop={8}
           >
             <Image
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/2tdz64i6.png" }}
@@ -25,7 +28,10 @@ export default function HomeScreen({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate("SpeechToText")}
             activeOpacity={0.7}
-            accessible accessibilityLabel="Speech to Text"
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Speech to Text"
+            hitSlop={8}
           >
             <Image
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/007xigo5.png" }}
@@ -38,7 +44,13 @@ export default function HomeScreen({ navigation }) {
 
         {/* Row 2 */}
         <View style={styles.row}>
-          <TouchableOpacity activeOpacity={0.7} accessible accessibilityLabel="ASL Converter">
+          <TouchableOpacity
+            activeOpacity={0.7}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="ASL Converter"
+            hitSlop={8}
+          >
             <Image
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/d1mjnxqt.png" }}
               resizeMode="stretch"
@@ -47,7 +59,13 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.imageText}>ASL Converter</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity activeOpacity={0.7} accessible accessibilityLabel="Be My Eyes">
+          <TouchableOpacity
+            activeOpacity={0.7}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Be My Eyes"
+            hitSlop={8}
+          >
             <Image
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/kjxlg9k7.png" }}
               resizeMode="stretch"
@@ -61,7 +79,10 @@ export default function HomeScreen({ navigation }) {
         <TouchableOpacity
           onPress={() => navigation.navigate("ChatBotScreen")}
           activeOpacity={0.7}
-          accessible accessibilityLabel="AI Assistant"
+          accessible
+          accessibilityRole="button"
+          accessibilityLabel="AI Assistant"
+          hitSlop={8}
           style={styles.aiWrapper}
         >
           <Image
