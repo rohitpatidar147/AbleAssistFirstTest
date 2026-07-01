@@ -22,10 +22,11 @@ export default function ChatbotScreen({ navigation }) {
   const API_KEY = "AIzaSyCrJi62EIMPZM1LzaVcivvyjnhesaOPDvM"; // Hide this in production
 
   const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+    const messageText = inputMessage.trim();
+    if (!messageText) return;
 
-    setChatHistory((prev) => [...prev, { role: "user", text: inputMessage }]);
-    const userMessage = inputMessage;
+    setChatHistory((prev) => [...prev, { role: "user", text: messageText }]);
+    const userMessage = messageText;
     setInputMessage("");
 
     try {
