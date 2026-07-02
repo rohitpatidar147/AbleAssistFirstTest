@@ -54,6 +54,10 @@ export default function ChatbotScreen({ navigation }) {
       }
     } catch (error) {
       console.error("Error fetching AI response:", error);
+      setChatHistory((prev) => [
+        ...prev,
+        { role: "ai", text: "I couldn't connect right now. Please try again." },
+      ]);
     }
   };
 
