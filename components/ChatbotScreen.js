@@ -130,12 +130,19 @@ export default function ChatbotScreen({ navigation }) {
               value={inputMessage}
               onChangeText={setInputMessage}
               style={styles.input}
+              accessibilityLabel="Chat message"
               onSubmitEditing={handleSendMessage}
               returnKeyType="send"
             />
             <TouchableOpacity
               onPress={handleSendMessage}
-              style={styles.sendButton}
+              disabled={!inputMessage.trim()}
+              style={[
+                styles.sendButton,
+                !inputMessage.trim() && styles.disabledSendButton,
+              ]}
+              accessibilityRole="button"
+              accessibilityLabel="Send message"
             >
               <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}>
                 Send
@@ -231,6 +238,9 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
     paddingHorizontal: 20,
     borderRadius: 20,
+  },
+  disabledSendButton: {
+    opacity: 0.5,
   },
   image8: {
     width: 40,
