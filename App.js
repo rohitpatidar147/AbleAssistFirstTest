@@ -55,6 +55,7 @@ function OnboardingCarousel({ navigation }) {
         {screens.map((_, i) => (
           <View
             key={i}
+            accessibilityLabel={`Onboarding page ${i + 1}`}
             style={[
               styles.dot,
               currentIndex === i && styles.activeDot,
