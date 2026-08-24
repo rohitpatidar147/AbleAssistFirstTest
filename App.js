@@ -18,6 +18,7 @@ import SpeechToTextScreen from './components/SpeechToTextScreen';
 import ChatBotScreen from './components/ChatbotScreen';
 
 const Stack = createNativeStackNavigator();
+const ONBOARDING_VIEWABILITY_CONFIG = { viewAreaCoveragePercentThreshold: 50 };
 
 function OnboardingCarousel({ navigation }) {
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -51,7 +52,7 @@ function OnboardingCarousel({ navigation }) {
             setCurrentIndex(viewableItems[0].index);
           }
         }}
-        viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
+        viewabilityConfig={ONBOARDING_VIEWABILITY_CONFIG}
       />
 
       <View style={styles.dotsContainer}>
