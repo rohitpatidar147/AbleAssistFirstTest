@@ -21,6 +21,7 @@ export default function HomeScreen({ navigation }) {
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/2tdz64i6.png" }}
               resizeMode="stretch"
               style={styles.image}
+              accessible={false}
             />
             <Text style={styles.imageText}>Text To Speech</Text>
           </TouchableOpacity>
@@ -37,6 +38,7 @@ export default function HomeScreen({ navigation }) {
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/007xigo5.png" }}
               resizeMode="stretch"
               style={styles.image}
+              accessible={false}
             />
             <Text style={styles.imageText}>Speech To Text</Text>
           </TouchableOpacity>
@@ -55,6 +57,7 @@ export default function HomeScreen({ navigation }) {
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/d1mjnxqt.png" }}
               resizeMode="stretch"
               style={styles.image}
+              accessible={false}
             />
             <Text style={styles.imageText}>ASL Converter</Text>
           </TouchableOpacity>
@@ -70,6 +73,7 @@ export default function HomeScreen({ navigation }) {
               source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/kjxlg9k7.png" }}
               resizeMode="stretch"
               style={styles.image}
+              accessible={false}
             />
             <Text style={styles.imageText}>Be My Eyes</Text>
           </TouchableOpacity>
@@ -89,6 +93,7 @@ export default function HomeScreen({ navigation }) {
             source={{ uri: "https://storage.googleapis.com/tagjs-prod.appspot.com/HsgFDjQAVe/nufgzu2q.png" }}
             resizeMode="stretch"
             style={styles.aiImage}
+            accessible={false}
           />
           <Text style={styles.aiText}>AI Assistant</Text>
         </TouchableOpacity>
