@@ -28,6 +28,7 @@ export default function ChatbotScreen({ navigation }) {
     setChatHistory((prev) => [...prev, { role: "user", text: messageText }]);
     const userMessage = messageText;
     setInputMessage("");
+    Keyboard.dismiss();
 
     try {
       const response = await fetch(
