@@ -44,8 +44,9 @@ export default function ChatbotScreen({ navigation }) {
 
       const data = await response.json();
 
-      if (data.candidates && data.candidates.length > 0) {
-        const aiResponse = data.candidates[0].content.parts[0].text.trim();
+      const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+
+      if (aiResponse) {
         setChatHistory((prev) => [...prev, { role: "ai", text: aiResponse }]);
       } else {
         setChatHistory((prev) => [
