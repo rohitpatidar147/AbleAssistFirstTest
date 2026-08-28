@@ -82,7 +82,7 @@ export default function ChatbotScreen({ navigation }) {
             contentContainerStyle={{ paddingBottom: 20 }}
             ref={scrollViewRef}
             onContentSizeChange={() =>
-              scrollViewRef.current.scrollToEnd({ animated: true })
+              scrollViewRef.current?.scrollToEnd({ animated: true })
             }
           >
             {chatHistory.map((message, index) => (
